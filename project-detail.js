@@ -42,11 +42,44 @@ const projects = {
     tools: 'SolidWorks · 3D Printing · DfAM · Root Cause Analysis',
   },
   'weapon-hub': {
-    title: 'Parametric Weapon Hub — Equation-Driven Spline Design',
+    title: 'Parametric Weapon Hub Spline Design',
     tags: ['Design & FEA', 'Robotics'],
-    description: 'Created a parametric spline hub enabling rapid iteration of tooth count, assembly fit, and manufacturability for the Skull Crusher combat robot weapon system.',
-    specs: [['Method', 'Equation-driven curves'], ['Design', 'Fully parametric'], ['Context', 'ASME Skull Crusher']],
-    tools: 'SolidWorks · Parametric CAD · DFM · Shaft Design',
+    description: "Designed a spline shaft hub in SolidWorks to house Skull Crusher's two rotating weapon disks and transmit torque from the drive system. The model is fully parametric so the team can rapidly adapt the hub as the weapon geometry evolves.",
+    specs: [['Project Type', 'Weapon Systems'], ['Organization', 'ASME Skull Crusher'], ['Method', 'Equation-driven curves'], ['Date', 'August 2025']],
+    tools: 'SolidWorks · Parametric CAD · Global Variables · Equation-Driven Curves · Mechanical Design',
+    heroImage: {
+      src: 'img/weapon-hub-assembly.png',
+      alt: 'CAD rendering of the Skull Crusher dual-disk weapon assembly and spline hub',
+    },
+    story: [
+      {
+        label: '01 / Motivation',
+        title: 'A reliable interface for an evolving weapon',
+        text: "Once the Skull Crusher team selected a rotating-disk weapon, the next step was developing a reliable method to mount and drive both disks. Because the weapon geometry changes frequently during development, the hub needed to transmit torque while remaining easy to adjust.",
+      },
+      {
+        label: '02 / Approach',
+        title: 'Drive the geometry with equations',
+        text: 'I used SolidWorks Global Variables to control sketch and feature dimensions, then generated the spline profile with equation-driven curves. Important parameters such as spline tooth count can be changed instantly without rebuilding the model.',
+      },
+      {
+        label: '03 / Results',
+        title: 'Fast iteration without a ground-up rebuild',
+        text: 'The completed spline hub functions as intended and can be rapidly modified through the Global Variables interface. Tooth count and other critical dimensions are easy to change, enabling faster design iteration as the weapon system evolves.',
+      },
+    ],
+    gallery: [
+      {
+        src: 'img/weapon-hub-spline.png',
+        alt: 'Front CAD rendering showing the equation-driven spline profile and circular mounting pattern',
+        caption: 'Equation-driven spline profile and mounting pattern',
+      },
+      {
+        src: 'img/weapon-hub-assembly.png',
+        alt: 'CAD rendering of the spline hub installed between two rotating weapon disks',
+        caption: 'Spline hub integrated into the dual-disk weapon assembly',
+      },
+    ],
   },
   'aluminum-chair': {
     title: 'Machining & Assembling a Chair from Aluminum Stock',
@@ -108,4 +141,53 @@ if (!project) {
       return item;
     })
   );
+
+  if (project.heroImage) {
+    const image = document.createElement('img');
+    image.src = project.heroImage.src;
+    image.alt = project.heroImage.alt;
+    document.querySelector('#projectVisual').replaceChildren(image);
+  }
+
+  if (project.story?.length) {
+    const story = document.querySelector('#projectStory');
+    story.hidden = false;
+    story.replaceChildren(
+      ...project.story.map((section) => {
+        const item = document.createElement('div');
+        item.className = 'project-story-item';
+
+        const label = document.createElement('div');
+        label.className = 'project-detail-label';
+        label.textContent = section.label;
+
+        const title = document.createElement('h2');
+        title.textContent = section.title;
+
+        const text = document.createElement('p');
+        text.textContent = section.text;
+
+        item.append(label, title, text);
+        return item;
+      })
+    );
+  }
+
+  if (project.gallery?.length) {
+    const gallery = document.querySelector('#projectGallery');
+    gallery.hidden = false;
+    gallery.replaceChildren(
+      ...project.gallery.map((item) => {
+        const figure = document.createElement('figure');
+        const image = document.createElement('img');
+        const caption = document.createElement('figcaption');
+
+        image.src = item.src;
+        image.alt = item.alt;
+        caption.textContent = item.caption;
+        figure.append(image, caption);
+        return figure;
+      })
+    );
+  }
 }
