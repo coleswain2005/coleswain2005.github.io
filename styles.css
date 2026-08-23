@@ -739,21 +739,23 @@ button:focus-visible {
 
 .exp-date {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: #606870;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  color: #A0A8B0;
   margin-bottom: 8px;
 }
 
 .exp-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #4B9CD3;
-  background: rgba(39,116,174,0.08);
-  border: 1px solid rgba(39,116,174,0.2);
-  padding: 3px 8px;
+  color: #79B8E2;
+  background: rgba(39,116,174,0.14);
+  border: 1px solid rgba(75,156,211,0.38);
+  padding: 4px 9px;
   border-radius: 2px;
   display: inline-block;
 }
@@ -812,9 +814,10 @@ button:focus-visible {
   gap: 12px;
   flex-wrap: wrap;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: #606870;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  color: #A0A8B0;
   border-top: 1px solid #252B34;
   padding-top: 16px;
 }
@@ -1238,16 +1241,28 @@ button:focus-visible {
 ============================================================ */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 28px;
 }
 
 .skill-group {
+  grid-column: span 2;
   background: #1C2028;
   border: 1px solid #252B34;
   border-radius: 6px;
   padding: 32px;
   transition: border-color 0.2s ease;
+}
+
+.skill-group:nth-child(4) {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+.skill-group:nth-child(5) {
+  grid-column: 4 / span 2;
+  grid-row: 2;
 }
 
 .skill-group:hover {
@@ -1483,6 +1498,23 @@ footer {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE — COMPACT DESKTOP (≤1100px)
+============================================================ */
+@media (max-width: 1100px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+  }
+
+  .skill-group,
+  .skill-group:nth-child(4),
+  .skill-group:nth-child(5) {
+    grid-column: auto;
+    grid-row: auto;
+  }
 }
 
 /* ============================================================
