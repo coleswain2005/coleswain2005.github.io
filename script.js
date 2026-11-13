@@ -13,46 +13,36 @@ navLinks?.querySelectorAll('a').forEach((link) => {
   });
 });
 
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-projectCards.forEach((card) => {
-  const openProject = () => {
-    const href = card.dataset.projectHref;
-    if (href) window.location.href = href;
-  };
-
-  card.addEventListener('click', openProject);
-  card.addEventListener('keydown', (event) => {
-    if (event.key !== 'Enter' && event.key !== ' ') return;
-    event.preventDefault();
-    openProject();
+const filterButtons = document.querySelectorAll('#projects .filter-btn');
+const projectCards = document.querySelectorAll('#projects .project-card');
+function filterProjects(selectedFilter) {
+  filterButtons.forEach(button => {
+    const active = button.dataset.filter === selectedFilter;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
   });
-});
-
-filterButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const selectedFilter = button.dataset.filter;
-
-    filterButtons.forEach((item) => item.classList.remove('active'));
-    button.classList.add('active');
-
-    projectCards.forEach((card) => {
-      const tags = card.dataset.tags?.split(' ') ?? [];
-      const shouldShow = selectedFilter === 'all' || tags.includes(selectedFilter);
-      card.classList.toggle('hidden', !shouldShow);
-    });
+  let visible = 0;
+  projectCards.forEach(card => {
+    const show = selectedFilter === 'all' || card.dataset.tags.split(' ').includes(selectedFilter);
+    card.classList.toggle('hidden', !show);
+    card.hidden = !show;
+    if (show) visible++;
   });
-});
-
-document.querySelectorAll('.project-link').forEach((link) => {
-  link.addEventListener('click', () => {
-    filterButtons.forEach((button) => {
-      button.classList.toggle('active', button.dataset.filter === 'all');
-    });
-    projectCards.forEach((card) => card.classList.remove('hidden'));
-  });
-});
+  const count = document.querySelector('#projectCount');
+  if (count) count.textContent = `${visible} project collection${visible === 1 ? '' : 's'}`;
+}
+filterButtons.forEach(button => button.addEventListener('click', () => filterProjects(button.dataset.filter)));
+// Keep Experience's existing fragment links intact and resolve them to their
+// preserved case-study URLs, including links opened directly in a new tab.
+const legacyProjectIds = new Set(['disk-weapon', 'weapon-hub', 'qc-fixture', 'press-fit', 'pivot-test-stand', 'legacy-reverse-engineering', 'python-workflow', 'fan-propulsion', 'drone-payload', 'aluminum-chair']);
+function resolveLegacyProject() {
+  const id = window.location.hash.replace('#project-', '');
+  if (window.location.hash.startsWith('#project-') && legacyProjectIds.has(id)) {
+    window.location.replace(`project.html?project=${encodeURIComponent(id)}`);
+  }
+}
+window.addEventListener('hashchange', resolveLegacyProject);
+resolveLegacyProject();
 
 const revealItems = document.querySelectorAll('.reveal');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

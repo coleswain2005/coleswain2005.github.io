@@ -20,13 +20,14 @@
 
   <main class="project-detail-shell">
     <article class="project-detail" id="projectDetail">
-      <div class="project-detail-kicker">Engineering Project</div>
+      <nav class="project-breadcrumbs" id="projectBreadcrumbs" aria-label="Breadcrumb"></nav>
+      <div class="project-detail-kicker" id="projectContext">Engineering Project</div>
       <h1 class="project-detail-title" id="projectTitle">Project</h1>
       <div class="project-detail-tags" id="projectTags"></div>
 
       <div class="project-detail-layout">
         <div class="project-detail-visual" id="projectVisual">
-          <span>Project documentation and imagery coming soon</span>
+
         </div>
         <div class="project-detail-copy">
           <div class="project-detail-label">Overview</div>
@@ -39,13 +40,18 @@
         </div>
       </div>
 
+      <div id="projectOverview"></div>
+      <section class="project-children" id="projectChildren" hidden></section>
       <section class="project-detail-story" id="projectStory" hidden></section>
       <section class="project-detail-gallery" id="projectGallery" hidden></section>
 
-      <a href="index.html#projects" class="btn-secondary project-detail-return">← Return to Projects</a>
+      <nav id="projectReturn" class="project-return-nav" aria-label="Project navigation"><a href="index.html#projects" class="btn-secondary">← All Projects</a></nav>
+      <noscript><p>Enable JavaScript to read this project. <a href="index.html#projects">Browse the six project collections.</a></p></noscript>
     </article>
   </main>
 
+  <dialog class="project-image-dialog" id="imageDialog" aria-labelledby="imageCaption"><button type="button" id="closeImage" aria-label="Close enlarged image">Close ×</button><img id="enlargedImage" alt="" /><p id="imageCaption"></p></dialog>
+  <script src="projects-data.js"></script>
   <script src="project-detail.js"></script>
 </body>
 </html>
