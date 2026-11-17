@@ -111,11 +111,11 @@
  <p>After quantifying the differences between cutters, I shifted upstream to the press-fit assembly process. Two follow-on projects addressed cutter positioning and applied assembly force.</p>
  <div class="pivot-follow-on-grid">
   <article class="pivot-follow-on-card">
-   <img src="img/projects/press-fit/press-fit-fixture-photo.webp" alt="Wire cutter positioned within a press-fit locating fixture beneath an arbor press" loading="lazy">
+   <img src="img/projects/press-fit/IMG_1396.jpg" alt="Wire cutter positioned within a press-fit locating fixture beneath an arbor press" loading="lazy">
    <div class="pivot-follow-on-copy"><p class="pivot-substep">Follow-on project 01</p><h3>Press-fit locating fixtures</h3><p>Designed custom fixtures to standardize cutter alignment during press-fit assembly and isolate positioning-related variation.</p></div>
   </article>
   <article class="pivot-follow-on-card">
-   <img src="img/projects/press-fit/arbor-press-photo.webp" alt="Arbor press fitted with a torque wrench for measuring and controlling assembly input" loading="lazy">
+   <img src="img/projects/press-fit/IMG_1512.jpg" alt="Arbor press fitted with a torque wrench for measuring and controlling assembly input" loading="lazy">
    <div class="pivot-follow-on-copy"><p class="pivot-substep">Follow-on project 02</p><h3>Arbor press instrumentation</h3><p>Modified the press with controlled input and force measurement to investigate assembly loading and improve process consistency.</p></div>
   </article>
  </div>
