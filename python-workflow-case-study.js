@@ -1,4 +1,4 @@
-/* Python manufacturing workflow case study and sample quote lookup. */
+/* Python manufacturing workflow case study. */
 (() => {
   if (new URLSearchParams(location.search).get('project') !== 'python-workflow') return;
   document.getElementById('projectDescription').textContent = 'Developed a Python/pandas tool that transformed historical quote and bill-of-materials records into a searchable manufacturing-planning reference. A full or partial quote number returned associated components and whether CNC machining was required.';
@@ -26,15 +26,15 @@
       </div>
     </div>
     <div class="py-section py-panel">
-      <div class="py-heading"><div><p class="project-detail-label">02 / Interactive explanation</p><h2>Try the quote lookup</h2></div><span class="py-demo-label">Sample data</span></div>
-      <p>Enter a quote number to see how component matching and CNC classification work. This demo uses sample data rather than company records.</p>
+      <div class="py-heading"><div><p class="project-detail-label">02 / Interactive quote lookup</p><h2>Quote-to-component lookup</h2></div><span class="py-demo-label">Sample data</span></div>
+      <p>Enter a full or partial quote number to inspect matched components and their CNC machining requirements.</p>
       <form id="pyDemoForm" class="py-form">
         <label for="pyDemoInput">Quote number (partial matching allowed)</label>
         <div><input id="pyDemoInput" type="text" value="101" maxlength="25" spellcheck="false" autocomplete="off" placeholder="Enter 101, 202, or 999"><button type="submit">Look up parts →</button></div>
       </form>
       <div class="py-examples">Try: <button type="button" data-example="101">101</button><button type="button" data-example="202">202</button><button type="button" data-example="999">999</button></div>
       <div id="pyDemoOutput" class="py-results" aria-live="polite"></div>
-      <p class="py-footnote">Example records for demonstrating the lookup interface.</p>
+      <p class="py-footnote">Interactive lookup uses illustrative part and quote numbers.</p>
     </div>
     <div class="py-section py-panel">
       <p class="project-detail-label">03 / Design and implementation</p>
@@ -133,8 +133,8 @@ Q_Number  Product_Number      CNC_Status
       </div>
 
       <div class="py-code-takeaways">
-        <div><strong>Why normalize first?</strong><p>Consistent part identifiers make exact membership tests against the CNC-required set possible.</p></div>
-        <div><strong>Why copy the filtered rows?</strong><p>The final notebook resolved the pandas <code>SettingWithCopyWarning</code> by creating an explicit copy before adding the status column.</p></div>
+        <div><strong>Identifier normalization</strong><p>Standardized quote and part numbers support consistent searching and reliable CNC classification.</p></div>
+        <div><strong>Reliable DataFrame operations</strong><p>Using <code>.copy()</code> makes filtered results independent before assigning the CNC status column.</p></div>
       </div>
       
     </div>
@@ -144,7 +144,7 @@ Q_Number  Product_Number      CNC_Status
       <p>The finished tool accepts a quote number and displays matching components with their CNC-required or no-CNC classifications, replacing repetitive manual searches through BOM records.</p>
       <div class="py-results-grid">
         <div><h3>Functional result</h3><p>Quote search, component retrieval, and CNC classification in one repeatable workflow.</p></div>
-        <div><h3>Debugging</h3><p>Resolved an undefined-variable error and a pandas chained-assignment warning by explicitly copying filtered rows.</p></div>
+        <div><h3>Implementation refinement</h3><p>Filtered data with explicit DataFrame copies before adding CNC status, ensuring consistent pandas behavior.</p></div>
         <div><h3>Practical application</h3><p>The result connects quote history with manufacturing requirements to support production planning and quoting decisions.</p></div>
       </div>
     </div>`;
@@ -177,7 +177,7 @@ Q_Number  Product_Number      CNC_Status
   }
   document.getElementById('pyDemoForm').addEventListener('submit',event=>{event.preventDefault();render()});
   document.querySelectorAll('.py-examples button').forEach(button=>button.addEventListener('click',()=>{input.value=button.dataset.example;render();input.focus()}));
-  // Lightweight, dependency-free notebook syntax presentation and copy controls.
+  // Notebook syntax highlighting and copy controls.
   host.querySelectorAll('.py-highlight code').forEach(code => {
     const original = code.textContent;
     const escape = value => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
