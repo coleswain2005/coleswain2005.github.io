@@ -30,32 +30,16 @@
     <p class="pivot-label">02 / Measurement principle</p>
     <h2 id="pivot-method">Translating force into pivot friction torque</h2>
     <p>With the cutter's lower handle constrained, a cord pulled the upper handle through a pulley system. Incremental hanging masses provided a known gravitational load. The approximately 88 mm moment arm was measured from the pivot to the force application point. Keeping the cord perpendicular to the handle makes the torque comparison consistent across positions.</p>
-    <div class="pivot-method-grid">
-      <div class="pivot-method-diagram">
-        <div class="pivot-equation">τ = F × r = (m · g) × r</div>
-        <svg id="pivot-geometry" viewBox="0 0 560 315" role="img" aria-label="Mechanical schematic showing the pivot, fixed handle, moving handle and perpendicular pulling force">
-          <defs><marker id="pivot-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8" stroke="#4B9CD3" stroke-width="1.8" fill="none"/></marker></defs>
-          <path d="M100 199 L366 276" stroke="#8995A0" stroke-linecap="round" stroke-width="17"/>
-          <line id="pivot-handle" x1="100" y1="199" x2="325" y2="199" stroke="#E8EAE6" stroke-width="17" stroke-linecap="round"/>
-          <line id="pivot-radius" x1="100" y1="199" x2="325" y2="199" stroke="#4B9CD3" stroke-width="2" stroke-dasharray="6 5"/>
-          <circle cx="100" cy="199" r="12" fill="#12161B" stroke="#4B9CD3" stroke-width="4"/>
-          <line id="pivot-force" x1="325" y1="199" x2="325" y2="79" stroke="#4B9CD3" stroke-width="3" marker-end="url(#pivot-arrow)"/>
-          <text x="44" y="171" font-family="monospace" font-size="16" fill="#CED8DF">Pivot</text>
-          <text id="pivot-force-label" x="340" y="70" font-family="monospace" font-size="17" fill="#4B9CD3">F = mg</text>
-          <text id="pivot-r-label" x="187" y="170" font-family="monospace" font-size="15" fill="#E8EAE6">r ≈ 88 mm</text>
-          <text x="335" y="302" font-family="monospace" font-size="13" fill="#A0A8B0">Fixed handle</text>
-        </svg>
-        <div class="pivot-angles"><span>Opening angle</span><button type="button" data-angle="0" aria-pressed="true">0°</button><button type="button" data-angle="10" aria-pressed="false">10°</button><button type="button" data-angle="20" aria-pressed="false">20°</button><button type="button" data-angle="30" aria-pressed="false">30°</button></div>
-        <p class="pivot-footnote">Illustrative mechanical diagram; the direction of applied force is maintained perpendicular to the moving handle.</p>
+    <div class="pivot-principle-card">
+      <div class="pivot-principle-equation">
+        <span class="pivot-principle-overline">Governing relationship</span>
+        <strong>τ = F × r = m × g × r</strong>
+        <span>Applied load translated into pivot torque</span>
       </div>
-      <div class="pivot-torque-calc">
-        <p class="pivot-label">Interactive physics</p><h3>Torque from hanging mass</h3>
-        <label for="pivot-mass">Hanging mass <strong id="pivot-mass-display">100 g</strong></label>
-        <input id="pivot-mass" type="range" min="20" max="500" step="10" value="100"/>
-        <div class="pivot-calc-stat"><span>Applied force</span><strong id="pivot-calc-force">0.981 N</strong></div>
-        <div class="pivot-calc-stat"><span>Ideal applied torque</span><strong id="pivot-calc-torque">0.0863 N·m</strong></div>
-        <p class="pivot-calc-formula">τ = (mass / 1000) × 9.81 × 0.088</p>
-        <p class="pivot-footnote">Calculated demonstration, not recorded test results. Assumes perpendicular loading and neglects pulley friction and system losses.</p>
+      <div class="pivot-principle-details">
+        <div><strong>m</strong><span>Incremental hanging mass</span></div>
+        <div><strong>g</strong><span>9.81 m/s² gravitational acceleration</span></div>
+        <div><strong>r</strong><span>≈ 88 mm nominal moment arm</span></div>
       </div>
     </div>
     <p class="pivot-method-summary"><strong>Procedure:</strong> Add hanging mass incrementally until the cutter begins opening, record the initiation load, and calculate the torque at the selected cutter position.</p>
@@ -175,26 +159,6 @@
 </section>
   `;
   document.getElementById('projectReturn').before(root);
-  const setAngle=(angle)=>{
-    const rad=-angle*Math.PI/180,pivotX=100,pivotY=199;
-    const hx=pivotX+225*Math.cos(rad),hy=pivotY+225*Math.sin(rad);
-    const fx=hx+120*Math.sin(rad),fy=hy-120*Math.cos(rad);
-    for(const id of ['pivot-handle','pivot-radius']){const el=root.querySelector('#'+id);el.setAttribute('x2',hx);el.setAttribute('y2',hy);}
-    const force=root.querySelector('#pivot-force');force.setAttribute('x1',hx);force.setAttribute('y1',hy);force.setAttribute('x2',fx);force.setAttribute('y2',fy);
-    const label=root.querySelector('#pivot-force-label');label.setAttribute('x',fx+13);label.setAttribute('y',fy);
-    const radius=root.querySelector('#pivot-r-label');radius.setAttribute('x',(pivotX+hx)/2-32);radius.setAttribute('y',(pivotY+hy)/2-25);
-    root.querySelectorAll('[data-angle]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.angle===angle)));
-  };
-  root.querySelectorAll('[data-angle]').forEach(b=>b.addEventListener('click',()=>setAngle(+b.dataset.angle)));
-  const updateMass=()=>{
-    const grams=+root.querySelector('#pivot-mass').value,force=grams/1000*9.81;
-    root.querySelector('#pivot-mass-display').textContent=grams+' g';
-    root.querySelector('#pivot-calc-force').textContent=force.toFixed(3)+' N';
-    root.querySelector('#pivot-calc-torque').textContent=(force*.088).toFixed(4)+' N·m';
-  };
-  root.querySelector('#pivot-mass').addEventListener('input',updateMass);
-  setAngle(0);updateMass();
-
   // 15 measured cutter profiles from the QC cross-reference worksheet; values are hanging mass in kilograms.
   const measuredMassKg=[
     [0.030,0.0175,0.0175,0.015],
