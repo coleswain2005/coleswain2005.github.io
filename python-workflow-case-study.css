@@ -1,0 +1,100 @@
+/* Scoped to Python manufacturing project content: no global design changes. */
+.project-detail-page .python-workflow-showcase { display:grid; gap:28px; margin-top:68px; }
+.project-detail-page .python-workflow-showcase h2 { color:#E8EAE6; font-size:clamp(1.6rem,3.5vw,2.6rem); line-height:1.22; letter-spacing:-.035em; margin:12px 0 20px; }
+.project-detail-page .python-workflow-showcase h3 { color:#E8EAE6; font-size:1.04rem; margin:0 0 10px; }
+.project-detail-page .python-workflow-showcase p { color:#A0A8B0; line-height:1.8; max-width:85ch; }
+.project-detail-page .py-panel { padding:clamp(22px,4vw,44px); background:#13161B; border:1px solid #252B34; border-radius:6px; min-width:0; }
+.project-detail-page .py-flow { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:32px; }
+.project-detail-page .py-flow>div { background:#13161B; border:1px solid #252B34; border-radius:5px; padding:19px; min-width:0; }
+.project-detail-page .py-flow span,.project-detail-page .py-steps span { display:block; color:#4B9CD3; font:11px 'JetBrains Mono',monospace; margin-bottom:12px; }
+.project-detail-page .py-flow strong { display:block; color:#E8EAE6; line-height:1.35; }
+.project-detail-page .py-flow small { display:block; color:#A0A8B0; line-height:1.5; margin-top:7px; }
+.project-detail-page .py-heading { display:flex; justify-content:space-between; align-items:start; gap:16px; flex-wrap:wrap; }
+.project-detail-page .py-demo-label { border:1px solid #2774AE; border-radius:3px; color:#4B9CD3; padding:8px 12px; font:10px 'JetBrains Mono',monospace; }
+.project-detail-page .py-form { margin-top:30px; }
+.project-detail-page .py-form label { display:block; color:#E8EAE6; margin-bottom:12px; font:11px 'JetBrains Mono',monospace; }
+.project-detail-page .py-form>div { display:flex; flex-wrap:wrap; gap:10px; }
+.project-detail-page .py-form input { flex:1 1 210px; min-width:0; border:1px solid #333B47; border-radius:4px; background:#0D0F12; color:#E8EAE6; padding:14px 16px; font:14px 'JetBrains Mono',monospace; }
+.project-detail-page .py-form button { border:1px solid #4B9CD3; border-radius:4px; background:#2774AE; color:white; padding:14px 18px; cursor:pointer; font:12px 'JetBrains Mono',monospace; }
+.project-detail-page .py-form button:hover { background:#4B9CD3; }
+.project-detail-page .py-examples { color:#A0A8B0; font:11px 'JetBrains Mono',monospace; margin:15px 0 24px; }
+.project-detail-page .py-examples button { border:0; background:none; color:#4B9CD3; cursor:pointer; text-decoration:underline; font:inherit; margin-left:9px; }
+.project-detail-page .py-results { overflow-x:auto; border:1px solid #252B34; border-radius:4px; }
+.project-detail-page .py-results .py-summary,.project-detail-page .py-results .py-none { padding:15px; margin:0; background:#1C2028; font:11px 'JetBrains Mono',monospace; }
+.project-detail-page .py-results table { width:100%; border-collapse:collapse; color:#E8EAE6; font:12px/1.6 'JetBrains Mono',monospace; }
+.project-detail-page .py-results th,.project-detail-page .py-results td { padding:13px 15px; text-align:left; border-top:1px solid #252B34; white-space:nowrap; }
+.project-detail-page .py-results th { color:#A0A8B0; text-transform:uppercase; font-size:10px; }
+.project-detail-page .py-required { color:#F2C879; }.project-detail-page .py-no-cnc { color:#A0D5B4; }
+.project-detail-page .python-workflow-showcase .py-footnote { font-size:.78rem; margin-top:16px; }
+.project-detail-page .py-steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px; margin:32px 0 42px; }
+.project-detail-page .py-steps>div { border-left:2px solid #2774AE; padding-left:18px; }
+.project-detail-page .py-steps p { font-size:.86rem; }
+.project-detail-page .py-code-heading { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:12px; margin-bottom:14px; }
+.project-detail-page .py-code-heading small { color:#A0A8B0; font:10px 'JetBrains Mono',monospace; }
+.project-detail-page .py-code { background:#0D0F12; color:#DCE5EF; border:1px solid #333B47; padding:24px; border-radius:4px; overflow-x:auto; font:12px/1.9 'JetBrains Mono',monospace; }
+.project-detail-page .py-results-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-top:34px; }
+.project-detail-page .py-results-grid>div { border-top:1px solid #333B47; padding-top:22px; }
+.project-detail-page .py-results-grid p { font-size:.85rem; }
+@media(max-width:760px){
+ .project-detail-page .py-flow { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .project-detail-page .py-steps,.project-detail-page .py-results-grid { grid-template-columns:minmax(0,1fr); }
+ .project-detail-page .py-code { padding:16px; font-size:11px; }
+}
+@media(max-width:460px){
+ .project-detail-page .py-flow { grid-template-columns:minmax(0,1fr); }
+ .project-detail-page .py-form button { width:100%; }
+}
+/* Expandable supporting code, scoped to this case study. */
+.project-detail-page .py-code-explanation { margin:16px 0 30px; font-size:.9rem; }
+.project-detail-page .py-code-explanation strong { color:#E8EAE6; font-weight:600; }
+.project-detail-page .py-code-details { margin-top:28px; border:1px solid #333B47; border-radius:4px; background:#0D0F12; overflow:hidden; }
+.project-detail-page .py-code-details summary { display:flex; justify-content:space-between; align-items:center; gap:18px; padding:18px 22px; cursor:pointer; color:#E8EAE6; list-style:none; }
+.project-detail-page .py-code-details summary::-webkit-details-marker { display:none; }
+.project-detail-page .py-code-details summary strong { display:block; font-size:.95rem; }
+.project-detail-page .py-code-details summary small { display:block; margin-top:5px; color:#A0A8B0; font:11px/1.6 'JetBrains Mono',monospace; }
+.project-detail-page .py-code-toggle { color:#4B9CD3; font:22px 'JetBrains Mono',monospace; }
+.project-detail-page .py-code-details[open] .py-code-toggle { transform:rotate(45deg); }
+.project-detail-page .py-code-details-body { padding:0 22px 22px; border-top:1px solid #252B34; }
+.project-detail-page .py-code-details-body p { font-size:.86rem; margin:18px 0; }
+.project-detail-page .py-code-details-body .py-code { margin:0; }
+@media(max-width:460px){ .project-detail-page .py-code-details summary { padding:16px; }.project-detail-page .py-code-details-body { padding:0 16px 16px; } }
+
+/* Notebook code layout. */
+.project-detail-page .py-notebook { overflow:hidden; border:1px solid #343E4A; border-radius:8px; background:#101419; margin:30px 0 26px; }
+.project-detail-page .py-notebook-top { display:flex; align-items:center; flex-wrap:wrap; gap:9px; padding:15px 20px; border-bottom:1px solid #333B47; background:#1D252D; font:10px 'JetBrains Mono',monospace; color:#A0A8B0; }
+.project-detail-page .py-notebook-top strong { margin-left:12px; font-weight:500; color:#E8EAE6; }
+.project-detail-page .py-notebook-top>span:last-child { margin-left:auto; }
+.project-detail-page .py-notebook-dot { display:block; width:8px; height:8px; border:1px solid #67737F; border-radius:100%; }
+.project-detail-page .py-notebook-cell { display:grid; grid-template-columns:80px minmax(0,1fr); gap:0; border-bottom:1px solid #333B47; }
+.project-detail-page .py-notebook-last { border-bottom:0; }
+.project-detail-page .py-notebook-sidebar { background:#151D25; color:#4B9CD3; padding:21px 10px; text-align:right; font:11px 'JetBrains Mono',monospace; }
+
+.project-detail-page .py-notebook-main { min-width:0; padding:0; }
+.project-detail-page .py-cell-header { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 20px; border-bottom:1px solid #27323E; color:#9DACBA; text-transform:uppercase; letter-spacing:.08em; font:10px 'JetBrains Mono',monospace; }
+.project-detail-page .py-copy-code { background:transparent; color:#4B9CD3; border:1px solid #365B76; border-radius:4px; padding:7px 10px; cursor:pointer; font:10px 'JetBrains Mono',monospace; text-transform:none; letter-spacing:0; }
+.project-detail-page .py-copy-code:hover { background:#213341; }
+.project-detail-page .py-notebook .py-code { margin:0; border:0; background:transparent; padding:22px 24px; border-radius:0; font:12px/1.8 'JetBrains Mono',monospace; }
+.project-detail-page .py-syntax-comment { color:#7CABA2; }
+.project-detail-page .py-syntax-string { color:#E5BC90; }
+.project-detail-page .py-syntax-keyword { color:#C9A1F2; }
+.project-detail-page .py-syntax-builtin { color:#8FC5EE; }
+.project-detail-page .py-notebook-output { padding:18px 22px 24px; border-top:1px solid #27323E; background:#182027; }
+.project-detail-page .py-output-label { color:#9AA5B1; font:10px/1.7 'JetBrains Mono',monospace; margin-bottom:14px; }
+.project-detail-page .py-notebook-output pre { overflow-x:auto; color:#BED9BF; font:12px/1.8 'JetBrains Mono',monospace; margin:0; }
+.project-detail-page .py-code-takeaways { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:26px 0; }
+.project-detail-page .py-code-takeaways>div { padding:20px; background:#1C2028; border-left:2px solid #2774AE; }
+.project-detail-page .py-code-takeaways strong { color:#E8EAE6; }
+.project-detail-page .py-code-takeaways p { margin-top:8px; font-size:.84rem; }
+.project-detail-page .py-code-takeaways code,.project-detail-page .py-panel>p code { font: .9em 'JetBrains Mono',monospace; color:#8FC5EE; }
+@media(max-width:760px){
+ .project-detail-page .py-notebook-cell { grid-template-columns:58px minmax(0,1fr); }
+ .project-detail-page .py-notebook-sidebar { padding:21px 6px; font-size:9px; }
+ .project-detail-page .py-notebook .py-code { padding:16px 12px; font-size:10px; }
+ .project-detail-page .py-cell-header { padding:12px; font-size:9px; }
+ .project-detail-page .py-code-takeaways { grid-template-columns:minmax(0,1fr); }
+ .project-detail-page .py-notebook-top>span:last-child { flex-basis:100%; margin:5px 0 0; }
+}
+
+/* Output prompt belongs to the results region, independent of input height. */
+.project-detail-page .py-output-label { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+.project-detail-page .py-output-prompt { color:#4B9CD3; font-size:11px; white-space:nowrap; }

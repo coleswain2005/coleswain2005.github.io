@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Python manufacturing quote workflow visualization</title>
+<desc id="desc">A designed visual summary recreating the Jupyter workflow from the uploaded notebook screenshots: import quote BOM data, clean and filter, look up quote, and classify CNC status.</desc>
+<rect width="1200" height="720" fill="#101419"/>
+<rect x="34" y="34" width="1132" height="652" rx="15" fill="#182027" stroke="#334453" stroke-width="2"/>
+<rect x="34" y="34" width="1132" height="68" rx="15" fill="#24313B"/>
+<rect x="34" y="86" width="1132" height="16" fill="#24313B"/>
+<circle cx="72" cy="68" r="9" fill="#566E7C"/><circle cx="103" cy="68" r="9" fill="#566E7C"/><circle cx="134" cy="68" r="9" fill="#566E7C"/>
+<text x="175" y="76" font-family="monospace" font-size="24" fill="#E8EAE6" font-weight="bold">manufacturing_quote_lookup.ipynb</text>
+<text x="1090" y="76" font-family="monospace" font-size="17" fill="#9AABB8" text-anchor="end">Python 3</text>
+<text x="73" y="152" font-family="monospace" font-size="16" fill="#4B9CD3">IN [1]</text>
+<rect x="171" y="123" width="950" height="214" rx="7" fill="#0D0F12" stroke="#334453"/>
+<text x="203" y="165" font-family="monospace" font-size="21" fill="#9BB7C8"># 01 — Load &amp; normalize quote / BOM data</text>
+<text x="203" y="208" font-family="monospace" font-size="24" fill="#DCE5EF">data = pd.read_excel(<tspan fill="#E5BC90">"QuoteBOM.xlsx"</tspan>)</text>
+<text x="203" y="253" font-family="monospace" font-size="24" fill="#DCE5EF">data[<tspan fill="#E5BC90">"Q_Number"</tspan>] = clean_quote_ids(data)</text>
+<text x="203" y="298" font-family="monospace" font-size="24" fill="#DCE5EF">data = filter_primary_parts(data)</text>
+<text x="73" y="397" font-family="monospace" font-size="16" fill="#4B9CD3">IN [2]</text>
+<rect x="171" y="359" width="950" height="120" rx="7" fill="#0D0F12" stroke="#334453"/>
+<text x="203" y="398" font-family="monospace" font-size="21" fill="#9BB7C8"># 02 — Search quotes &amp; assign CNC requirements</text>
+<text x="203" y="449" font-family="monospace" font-size="24" fill="#DCE5EF">Q_P_CNC(data, cnc_required_parts)</text>
+<text x="73" y="538" font-family="monospace" font-size="16" fill="#4B9CD3">OUT</text>
+<rect x="171" y="501" width="950" height="143" rx="7" fill="#132B2A" stroke="#3D6159"/>
+<text x="203" y="543" font-family="monospace" font-size="19" fill="#9DC4B6">Q_Number</text><text x="480" y="543" font-family="monospace" font-size="19" fill="#9DC4B6">Product_Number</text><text x="850" y="543" font-family="monospace" font-size="19" fill="#9DC4B6">CNC_Status</text>
+<line x1="203" y1="561" x2="1075" y2="561" stroke="#47695F" stroke-width="1"/>
+<text x="203" y="602" font-family="monospace" font-size="22" fill="#E8EAE6">2101A</text><text x="480" y="602" font-family="monospace" font-size="22" fill="#E8EAE6">9ILF</text><text x="850" y="602" font-family="monospace" font-size="22" fill="#B4E5CC">CNC REQUIRED</text>
+</svg>

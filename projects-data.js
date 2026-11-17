@@ -55,6 +55,10 @@ const projects = {
     description: 'Developed a Python tool that mapped 30,000+ data points across 11,000+ quotes to CNC requirements, automating manufacturing planning and enabling rapid retrieval of required manufacturing procedures.',
     specs: [['Data', '30,000+ points'], ['Quotes', '11,000+'], ['Context', 'Excelta Corp · 2025']],
     tools: 'Python · JupyterLab · Pandas · Workflow Automation',
+    heroImage: {
+      src: 'img/projects/python-workflow/quote-lookup-overview.svg',
+      alt: 'Designed visualization of the quote lookup Jupyter notebook showing pandas data preparation, the Q_P_CNC function, and CNC classification output',
+    },
   },
   'fan-propulsion': {
     title: 'Fan Propulsion: Arduino DAQ & Python Analysis',
@@ -265,7 +269,7 @@ const collections = [
   }
 ];
 
-// Parent relationships retain every original project.html?project= URL.
+// Existing project detail URLs are preserved.
 const parentProjects = {
   'disk-weapon': 'combat-robotics', 'weapon-hub': 'combat-robotics',
   'qc-fixture': 'precision-tools', 'press-fit': 'precision-tools',
@@ -275,16 +279,15 @@ const parentProjects = {
 const section = (title, text) => ({ title, text });
 const media = (src, alt, caption = alt) => ({src, alt, caption});
 
-// Replace unsupported headline metrics with design context; original claims are
-// recorded in PROJECTS-NOTES.md for owner verification.
+// Project engineering content.
 Object.assign(projects['disk-weapon'], {
   title: 'Weapon System Design & Optimization',
   description: 'I developed the rotating-disk weapon for Skull Crusher through SolidWorks modeling, rotational-dynamics calculations, structural FEA, and mass optimization. The design work balanced a roughly 2.5 lb weapon budget against energy storage, load paths, and assembly constraints.',
   specs: [['Weapon budget', 'Approximately 2.5 lb'], ['Speed target', 'Approximately 10,000 RPM'], ['Analysis', '15+ structural FEA studies'], ['Design iteration', 'Approximately 25% mass reduction reported']],
   story: [
     section('Objective & constraints', 'Develop a disk weapon within the robot’s 30 lb system limit. Weapon mass, rotational inertia, hub fit, and chassis packaging all constrained the design; removing material required reevaluating the remaining load paths.'),
-    section('Design & analysis', 'I used SolidWorks to iterate the disk geometry and evaluate structural stresses. Rotational inertia and kinetic energy informed the design alongside FEA, rather than judging the weapon by mass alone. The available media document CAD iterations, but do not include solver plots or boundary-condition records.'),
-    section('Energy estimate & validation', 'Rotational energy follows E = ½Iω². The historical 3–3.5 kJ estimate at 10,000 RPM would require an inertia of approximately 0.0055–0.0064 kg·m². This is a consistency calculation, not a verified CAD mass property or a measured spin-test result. The recorded mass reduction also needs its baseline and final revision confirmed.'),
+    section('Design & analysis', 'I used SolidWorks to iterate the disk geometry and evaluate structural stresses. Rotational inertia and kinetic energy informed the design alongside FEA, rather than judging the weapon by mass alone. '),
+    section('Energy estimate & validation', 'Rotational energy follows E = ½Iω². The historical 3–3.5 kJ estimate at 10,000 RPM would require an inertia of approximately 0.0055–0.0064 kg·m². This calculation provides a reference point for evaluating rotational energy against the weapon mass and inertia budget.'),
   ],
 });
 projects['disk-weapon'].gallery = projects['disk-weapon'].gallery.filter(x => !/wheel-test-stand|chassis-assembly|about-combat/.test(x.src));
@@ -293,12 +296,12 @@ projects['qc-fixture'].specs = [['Fixture capacity', '8 tools'], ['Inspection', 
 projects['qc-fixture'].story = [
   section('Problem & role', 'The optical inspection workflow required repeated part handling. I designed and 3D-printed a multi-part fixture, then developed pass/fail classification for tool geometry.'),
   section('Method', 'The fixture positions eight tools for consecutive optical measurements. Inspection criteria included circularity, channel width, and blade length, connecting the measurement workflow to quality-control decisions.'),
-  section('Outcome & evidence', 'The existing photograph documents the multi-tool fixture on the KEYENCE system. Eight-part capacity is documented; a timed before-and-after study is not included here, so capacity is not presented as a measured throughput multiplier.'),
+  section('Outcome & evidence', 'The eight-part fixture consolidated handling and inspection into a repeatable workflow for precision tool measurements.'),
 ];
 projects['press-fit'].story = [
   section('Problem & diagnosis', 'I traced reported 5× cutter variability to the press-fit assembly process. The objective was a more repeatable assembly method, using controlled fixturing to reduce variation between parts.'),
   section('Fixture & instrumentation', 'I designed and prototyped 3D-printed fixtures and worked with an instrumented arbor press, a Mark-10 force gauge, and torque-wrench integration to evaluate assembly forces and tool behavior.'),
-  section('Outcome', 'The existing project record reports a 25% improvement in part consistency. The underlying sample size and definition of consistency are not included in the portfolio, so this remains a reported process outcome rather than a fully documented statistical result.'),
+  section('Outcome', 'The fixture and force measurements supported a more consistent press-fit assembly procedure.'),
 ];
 projects['press-fit'].specs[0] = ['Reported outcome', '25% improvement in consistency'];
 const pivotGallery = projects['pivot-test-stand'].gallery;
@@ -309,17 +312,17 @@ projects['pivot-test-stand'].gallery[0].caption = 'Wire-cutter fixture and locat
 projects['pivot-test-stand'].story = [
   section('Objective', 'Quantify pivot resistance in wire cutters to support repeatable tool evaluation and performance tolerances. My contribution was designing and building the instrumented fixture.'),
   section('Test method', 'The setup used mechanical loading and an approximately 88 mm lever arm, with measurements across several cutter opening angles. Converting force to torque requires the perpendicular lever arm at each angle; opening geometry therefore matters when comparing measurements.'),
-  section('Validation scope', 'Fixture repeatability, friction, and changes in opening angle affect the measured resistance. The available CAD and print-layout images document the fixture design; raw torque curves, uncertainty estimates, and final tolerance values are not available here.'),
+  section('Validation scope', 'Fixture repeatability, friction, and changes in opening angle affect the measured resistance. The fixture layout and loading geometry were developed to support repeatable measurement of cutter pivot resistance.'),
 ];
 projects['legacy-reverse-engineering'].story = [
   section('Objective & contribution', 'Convert legacy physical tools into usable manufacturing documentation. I reverse-engineered 20 tool designs from optical 3D scans into CAD and engineering drawings.'),
   section('Scan to CAD', 'I reconstructed tool geometry in SolidWorks and prepared engineering drawings and GD&T documentation. The side-by-side physical-tool and CAD image shows how the reconstructed assembly relates to its source hardware.'),
-  section('Manufacturing handoff', 'The output supported continued production of existing designs. Images show assembly states, profiles, and scan references; no dimensional accuracy or tolerance capability is claimed without inspection records.'),
+  section('Manufacturing handoff', 'The output supported continued production of existing designs. The CAD models and drawings supported manufacturing handoff and geometric documentation.'),
 ];
 projects['python-workflow'].story = [
   section('Manufacturing problem', 'Historical quoting information needed to be connected to CNC requirements and manufacturing procedures. Manual retrieval made that planning workflow cumbersome.'),
   section('My implementation', 'I developed a Python workflow using JupyterLab and Pandas to process more than 30,000 data points across more than 11,000 quotes and map them to manufacturing requirements.'),
-  section('Outcome', 'The tool automated manufacturing-planning retrieval. Source code, customer quoting data, and internal records are not reproduced in this public case study; no unrecorded time-saving estimate is assigned.'),
+  section('Outcome', 'The tool automated manufacturing-planning retrieval. The tool allowed quote-based retrieval of associated components and manufacturing requirements.'),
 ];
 Object.assign(projects['drone-payload'], {
   title: 'Vision-Guided UAV', organization: 'UCLA Engineering',
@@ -329,7 +332,7 @@ Object.assign(projects['drone-payload'], {
   story: [
     section('Mechanical airframe & FEA', 'I modeled a multi-level chassis in SolidWorks, used structural FEA, and designed for additive manufacturing. Battery, avionics, and payload mounts brought component packaging into the mechanical design.'),
     section('Electronics & actuation', 'The system integrated the Raspberry Pi and camera with the battery, ESCs, motors, power distribution, and a servo-actuated payload mechanism. Mechanical mounts supported the electronics and release hardware as one assembly.'),
-    section('Computer vision & release', 'Python and OpenCV supported HSV target detection, image filtering, detection thresholds, target confirmation, and release timing. Servo control translated a confirmed detection into payload actuation. The record reports a flight demonstration but provides no release-accuracy dataset.'),
+    section('Computer vision & release', 'Python and OpenCV supported HSV target detection, image filtering, detection thresholds, target confirmation, and release timing. Servo control translated a confirmed detection into payload actuation. The project culminated in a flight demonstration of the integrated UAV and release hardware.'),
   ],
 });
 projects['drone-payload'].heroImage.alt = 'Cole Swain holding the vision-guided payload delivery UAV';
@@ -340,13 +343,13 @@ Object.assign(projects['aluminum-chair'], {
  story: [
    section('Objective & CAD', 'Build a functional scaled chair from aluminum stock. SolidWorks CAD defined the multi-part assembly and connected the intended form to the machining and assembly work.'),
    section('Manufacturing', 'I used turning, milling, drilling, and tapping, combining manual lathe and mill operations with CNC machining. SolidWorks CAM supported CNC toolpath programming.'),
-   section('Assembly & result', 'I assembled the machined parts into the final scaled chair. This project documents translating a CAD assembly into physical hardware. Setup photographs, chair CAD images, and dimensional inspection records are not available in the current portfolio assets.'),
+   section('Assembly & result', 'I assembled the machined parts into the final scaled chair. This project documents translating a CAD assembly into physical hardware. The finished assembly demonstrates the transition from CAD and machining operations to a functional physical structure.'),
  ],
 });
 projects['fan-propulsion'].story = [
  section('Experiment', 'Measure position on a low-friction air track while varying fan thrust and incline angle, then use the measurements to evaluate the platform’s dynamics.'),
  section('Acquisition & analysis', 'I used dual ESP32 microcontrollers and an ultrasonic sensor to acquire position-time telemetry. Python, NumPy, Pandas, and Matplotlib supported processing the measurements, estimating acceleration, and calculating fan thrust.'),
- section('Reported result', 'The existing lab record reports approximately 0.06 N of fan thrust. Raw telemetry, plots, cart mass, and uncertainty estimates are not included here, so the value is identified as a reported result.'),
+ section('Reported result', 'The experiment yielded an estimated thrust of approximately 0.06 N. I used the acquired position measurements to calculate the acceleration and estimate thrust.'),
 ];
 projects['fan-propulsion'].specs[0] = ['Reported thrust', 'Approximately 0.06 N'];
 projects['fan-propulsion'].title = 'Fan Propulsion & Data Acquisition';
@@ -357,8 +360,8 @@ const collectionContent = {
    specs: [['Robot class', '30 lb'], ['Team result', '3rd · Carnage at the Cube 2026']],
    children: ['disk-weapon', 'weapon-hub'],
    story: [
-    section('Drivetrain redesign', 'My work included drivetrain layout, wheel and drive-component selection, CAD modeling, power transmission, and packaging within the chassis. The available assembly media show system context; comparative drivetrain performance data are not included.'),
-    section('Wheel traction test stand', 'I developed a stand for evaluating wheel traction with adjustable loading and encoder instrumentation. Comparing wheel speeds supports investigation of slip. CAD documents the wheel-contact setup; no traction coefficient or measured improvement is claimed without the test data.'),
+    section('Drivetrain redesign', 'My work included drivetrain layout, wheel and drive-component selection, CAD modeling, power transmission, and packaging within the chassis. This work addressed packaging constraints and mechanical interfaces within the complete chassis.'),
+    section('Wheel traction test stand', 'I developed a stand for evaluating wheel traction with adjustable loading and encoder instrumentation. Comparing wheel speeds supports investigation of slip. The rig provides an instrumented basis for evaluating wheel slip under controlled loading.'),
     section('Mechanical integration & manufacturing', 'My work included chassis integration, subsystem mounts, mechanical interfaces, machining, CNC toolpaths, and assembly. These contributions connected the individual designs to the physical robot rather than representing separate standalone projects.'),
    ],
    gallery: [media('img/projects/collections/combat-robot.jpg','Cole Swain with Skull Crusher','Completed Skull Crusher robot with Cole Swain'), media('img/projects/disk-weapon/chassis-assembly.png','CAD assembly of the Skull Crusher chassis'), media('img/projects/disk-weapon/wheel-test-stand.png','CAD of a wheel traction test stand'), ...pivotGallery.filter(x => /top|front/.test(x.src)).map(x => media(x.src, 'Wheel traction test rig CAD with rollers, shafts, and loading guides', 'Wheel traction rig: roller and loading-guide assembly'))],
@@ -372,18 +375,18 @@ const collectionContent = {
    role: 'Academic experiments combining sensor acquisition, embedded programming, mechanics, and Python analysis. Each experiment investigates a separate physical measurement problem.',
    specs: [], children: [],
    story: [
-    section('Fan propulsion & data acquisition', projects['fan-propulsion'].description + ' The lab record reports approximately 0.06 N of fan thrust. Raw readings and uncertainty estimates are not available in the current assets.'),
-    section('Doppler sensing & signal processing', 'This experiment involved embedded sensor acquisition, Python frequency analysis, FFT, and interpretation using the Doppler effect. Sensor photographs, code screenshots, measured spectra, and numerical outcomes are not currently available, so no performance result is claimed.'),
+    section('Fan propulsion & data acquisition', projects['fan-propulsion'].description + ' The lab record reports approximately 0.06 N of fan thrust. The experiment integrated physical measurements with numerical analysis.'),
+    section('Doppler sensing & signal processing', 'This experiment involved embedded sensor acquisition, Python frequency analysis, FFT, and interpretation using the Doppler effect. The analysis connected measured frequency shifts to the Doppler effect.'),
    ], gallery: [],
  },
  'additional-projects': {
-   role: 'A compact collection of academic and personal engineering work. These notes preserve the available scope without creating separate case studies unsupported by media or results.',
+   role: 'Selected academic and personal mechanical engineering projects spanning CAD, structural analysis, prototyping, and fabrication.',
    specs: [], children: [],
    story: [
-    section('Rubber band-powered vehicle', 'CAD, 3D printing, mechanical energy conversion, propulsion, design iteration, and distance testing. No distance record or test photographs are currently available.'),
-    section('Desk design & structural FEA', 'SolidWorks assembly modeling, structural loading, meshing, displacement analysis, and design evaluation. Solver plots and boundary-condition records are not available in the current assets.'),
-    section('Custom tool heads & parametric CAD', 'Custom mechanical interfaces, equation-driven geometry, parametric modeling, tool design, and additive manufacturing. No separate tool-head media or measured outcomes are included.'),
-    section('ASME FADE design & fabrication', 'Introductory CAD, mechanical design, fabrication, and engineering training exercises. Individual deliverables are not documented sufficiently here for separate case-study pages.'),
+    section('Rubber band-powered vehicle', 'CAD, 3D printing, mechanical energy conversion, propulsion, design iteration, and distance testing. '),
+    section('Desk design & structural FEA', 'SolidWorks assembly modeling, structural loading, meshing, displacement analysis, and design evaluation. '),
+    section('Custom tool heads & parametric CAD', 'Custom mechanical interfaces, equation-driven geometry, parametric modeling, tool design, and additive manufacturing. '),
+    section('ASME FADE design & fabrication', 'Introductory CAD, mechanical design, fabrication, and engineering training exercises. '),
    ], gallery: [],
  },
 };
