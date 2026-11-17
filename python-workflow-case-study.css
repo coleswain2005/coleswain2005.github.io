@@ -58,3 +58,39 @@
 .project-detail-page .py-code-details-body p { font-size:.86rem; margin:18px 0; }
 .project-detail-page .py-code-details-body .py-code { margin:0; }
 @media(max-width:460px){ .project-detail-page .py-code-details summary { padding:16px; }.project-detail-page .py-code-details-body { padding:0 16px 16px; } }
+
+/* Screenshot-grounded notebook presentation; preserve existing site colors. */
+.project-detail-page .py-notebook { overflow:hidden; border:1px solid #343E4A; border-radius:8px; background:#101419; margin:30px 0 26px; }
+.project-detail-page .py-notebook-top { display:flex; align-items:center; flex-wrap:wrap; gap:9px; padding:15px 20px; border-bottom:1px solid #333B47; background:#1D252D; font:10px 'JetBrains Mono',monospace; color:#A0A8B0; }
+.project-detail-page .py-notebook-top strong { margin-left:12px; font-weight:500; color:#E8EAE6; }
+.project-detail-page .py-notebook-top>span:last-child { margin-left:auto; }
+.project-detail-page .py-notebook-dot { display:block; width:8px; height:8px; border:1px solid #67737F; border-radius:100%; }
+.project-detail-page .py-notebook-cell { display:grid; grid-template-columns:80px minmax(0,1fr); gap:0; border-bottom:1px solid #333B47; }
+.project-detail-page .py-notebook-last { border-bottom:0; }
+.project-detail-page .py-notebook-sidebar { background:#151D25; color:#4B9CD3; padding:21px 10px; text-align:right; font:11px 'JetBrains Mono',monospace; }
+.project-detail-page .py-notebook-out { display:block; margin-top:76px; color:#9AA5B1; }
+.project-detail-page .py-notebook-main { min-width:0; padding:0; }
+.project-detail-page .py-cell-header { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 20px; border-bottom:1px solid #27323E; color:#9DACBA; text-transform:uppercase; letter-spacing:.08em; font:10px 'JetBrains Mono',monospace; }
+.project-detail-page .py-copy-code { background:transparent; color:#4B9CD3; border:1px solid #365B76; border-radius:4px; padding:7px 10px; cursor:pointer; font:10px 'JetBrains Mono',monospace; text-transform:none; letter-spacing:0; }
+.project-detail-page .py-copy-code:hover { background:#213341; }
+.project-detail-page .py-notebook .py-code { margin:0; border:0; background:transparent; padding:22px 24px; border-radius:0; font:12px/1.8 'JetBrains Mono',monospace; }
+.project-detail-page .py-syntax-comment { color:#7CABA2; }
+.project-detail-page .py-syntax-string { color:#E5BC90; }
+.project-detail-page .py-syntax-keyword { color:#C9A1F2; }
+.project-detail-page .py-syntax-builtin { color:#8FC5EE; }
+.project-detail-page .py-notebook-output { padding:18px 22px 24px; border-top:1px solid #27323E; background:#182027; }
+.project-detail-page .py-output-label { color:#9AA5B1; font:10px/1.7 'JetBrains Mono',monospace; margin-bottom:14px; }
+.project-detail-page .py-notebook-output pre { overflow-x:auto; color:#BED9BF; font:12px/1.8 'JetBrains Mono',monospace; margin:0; }
+.project-detail-page .py-code-takeaways { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:26px 0; }
+.project-detail-page .py-code-takeaways>div { padding:20px; background:#1C2028; border-left:2px solid #2774AE; }
+.project-detail-page .py-code-takeaways strong { color:#E8EAE6; }
+.project-detail-page .py-code-takeaways p { margin-top:8px; font-size:.84rem; }
+.project-detail-page .py-code-takeaways code,.project-detail-page .py-panel>p code { font: .9em 'JetBrains Mono',monospace; color:#8FC5EE; }
+@media(max-width:760px){
+ .project-detail-page .py-notebook-cell { grid-template-columns:58px minmax(0,1fr); }
+ .project-detail-page .py-notebook-sidebar { padding:21px 6px; font-size:9px; }
+ .project-detail-page .py-notebook .py-code { padding:16px 12px; font-size:10px; }
+ .project-detail-page .py-cell-header { padding:12px; font-size:9px; }
+ .project-detail-page .py-code-takeaways { grid-template-columns:minmax(0,1fr); }
+ .project-detail-page .py-notebook-top>span:last-child { flex-basis:100%; margin:5px 0 0; }
+}
