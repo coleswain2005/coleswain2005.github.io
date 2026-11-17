@@ -107,16 +107,17 @@
 </section>
 <section class="pivot-panel pivot-next" id="pivot-next">
  <p class="pivot-label">05 / Root-cause investigation</p>
- <h2>Tracing variation to the assembly process.</h2>
- <p>Quantifying the variation led to a follow-on question: could cutter assembly and press-fit conditions be driving inconsistent pivot friction?</p>
- <div class="pivot-story-split">
-  <div class="pivot-story-copy">
-<h3>Follow-on engineering work</h3>
-   <div class="pivot-spec-row"><span>01</span><p><strong>Press-fit locating fixtures</strong> — custom 3D-printed supports to standardize cutter alignment and positioning during assembly.</p></div>
-   <div class="pivot-spec-row"><span>02</span><p><strong>Arbor press instrumentation</strong> — adding force measurement and controlled input to investigate and standardize press-fit loads.</p></div>
-   <a class="pivot-next-link" href="project.html?project=press-fit">Explore the related press-fit standardization project →</a>
-  </div>
-  <figure class="pivot-story-media"><img src="img/projects/press-fit/fixture-render-revised.png" alt="Press-fit tooling and fixture CAD related to cutter assembly standardization" loading="lazy"><figcaption>Follow-on work: fixtures and instrumentation for the cutter assembly process</figcaption></figure>
+ <h2>From measuring variation to controlling its source.</h2>
+ <p>After quantifying the differences between cutters, I shifted upstream to the press-fit assembly process. Two follow-on projects addressed cutter positioning and applied assembly force.</p>
+ <div class="pivot-follow-on-grid">
+  <article class="pivot-follow-on-card">
+   <img src="img/projects/press-fit/press-fit-fixture-photo.webp" alt="Wire cutter positioned within a press-fit locating fixture beneath an arbor press" loading="lazy">
+   <div class="pivot-follow-on-copy"><p class="pivot-substep">Follow-on project 01</p><h3>Press-fit locating fixtures</h3><p>Designed custom fixtures to standardize cutter alignment during press-fit assembly and isolate positioning-related variation.</p></div>
+  </article>
+  <article class="pivot-follow-on-card">
+   <img src="img/projects/press-fit/arbor-press-photo.webp" alt="Arbor press fitted with a torque wrench for measuring and controlling assembly input" loading="lazy">
+   <div class="pivot-follow-on-copy"><p class="pivot-substep">Follow-on project 02</p><h3>Arbor press instrumentation</h3><p>Modified the press with controlled input and force measurement to investigate assembly loading and improve process consistency.</p></div>
+  </article>
  </div>
 </section>
   `;
