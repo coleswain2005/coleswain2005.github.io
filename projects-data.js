@@ -349,7 +349,7 @@ Object.assign(projects['aluminum-chair'], {
 projects['fan-propulsion'].story = [
  section('Experiment', 'Measure position on a low-friction air track while varying fan thrust and incline angle, then use the measurements to evaluate the platform’s dynamics.'),
  section('Acquisition & analysis', 'I used dual ESP32 microcontrollers and an ultrasonic sensor to acquire position-time telemetry. Python, NumPy, Pandas, and Matplotlib supported processing the measurements, estimating acceleration, and calculating fan thrust.'),
- section('Reported result', 'The existing lab record reports approximately 0.06 N of fan thrust. I used the acquired position measurements to calculate the acceleration and estimate thrust.'),
+ section('Reported result', 'The experiment yielded an estimated thrust of approximately 0.06 N. I used the acquired position measurements to calculate the acceleration and estimate thrust.'),
 ];
 projects['fan-propulsion'].specs[0] = ['Reported thrust', 'Approximately 0.06 N'];
 projects['fan-propulsion'].title = 'Fan Propulsion & Data Acquisition';
@@ -380,7 +380,7 @@ const collectionContent = {
    ], gallery: [],
  },
  'additional-projects': {
-   role: 'A compact collection of academic and personal engineering work. These notes preserve the available scope without creating separate case studies unsupported by media or results.',
+   role: 'Selected academic and personal mechanical engineering projects spanning CAD, structural analysis, prototyping, and fabrication.',
    specs: [], children: [],
    story: [
     section('Rubber band-powered vehicle', 'CAD, 3D printing, mechanical energy conversion, propulsion, design iteration, and distance testing. '),
