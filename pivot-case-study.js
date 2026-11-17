@@ -16,19 +16,17 @@
   document.getElementById('projectGallery').hidden=true;
   const root=document.createElement('div');root.className='pivot-case-study';
   root.innerHTML=`
-  <section class="pivot-panel pivot-intro">
-    <p class="pivot-label">01 / Engineering problem</p>
-    <h2>Making pivot resistance measurable, repeatable, and actionable.</h2>
-    <p>At Excelta, wire-cutter pivot tightness was assessed primarily by how the tool felt when opened and closed. A subjective test could not reliably distinguish acceptable resistance between operators or quantify how a given cutter changed throughout its range of motion. I developed a mass-and-pulley test fixture to measure the friction torque required to initiate opening and compare the results with the quality-control team's assessments.</p>
-    <div class="pivot-overview-steps">
-      <div><span>01 / INPUT</span><strong>Incremental mass</strong><small>Controlled applied load</small></div>
-      <div><span>02 / MEASURE</span><strong>Opening torque</strong><small>Perpendicular lever arm</small></div>
-      <div><span>03 / ANALYZE</span><strong>Angle sensitivity</strong><small>Compare cutter positions</small></div>
-      <div><span>04 / APPLY</span><strong>QC reference</strong><small>Support acceptance limits</small></div>
-    </div>
-  </section>
+  <section class="pivot-panel pivot-intro" id="pivot-problem">
+  <p class="pivot-label">01 / Identify the QC problem</p>
+  <h2>Replacing subjective cutter-tightness inspection with a measurement.</h2>
+  <div class="pivot-story-split"><div class="pivot-story-copy">
+    <p>At Excelta, pivot tightness was evaluated by opening and closing wire cutters and judging the resistance by feel. That made comparisons between tools difficult to standardize.</p>
+    <p><strong>Objective:</strong> develop an intuitive, repeatable fixture that measures the torque required to initiate cutter opening, then relate those readings to the QC team's existing classifications.</p>
+    <div class="pivot-decision"><span>Design requirement</span><p>Constrain the cutter, apply a controlled load, and quantify resistance without relying solely on an operator's perception.</p></div>
+  </div><figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/torque-sketch.jpg" alt="Original wire-cutter friction torque hand sketch and physical cutter" loading="lazy"><figcaption>Initial concept: applied force and approximately 88 mm lever arm</figcaption></figure></div>
+</section>
 
-  <section class="pivot-panel" aria-labelledby="pivot-method">
+  <section class="pivot-panel" id="pivot-method-section" aria-labelledby="pivot-method">
     <p class="pivot-label">02 / Measurement principle</p>
     <h2 id="pivot-method">Translating force into pivot friction torque</h2>
     <p>With the cutter's lower handle constrained, a cord pulled the upper handle through a pulley system. Incremental hanging masses provided a known gravitational load. The approximately 88 mm moment arm was measured from the pivot to the force application point. Keeping the cord perpendicular to the handle makes the torque comparison consistent across positions.</p>
@@ -60,63 +58,73 @@
         <p class="pivot-footnote">Calculated demonstration, not recorded test results. Assumes perpendicular loading and neglects pulley friction and system losses.</p>
       </div>
     </div>
+    <p class="pivot-method-summary"><strong>Procedure:</strong> Add hanging mass incrementally until the cutter begins opening, record the initiation load, and calculate the torque at the selected cutter position.</p>
   </section>
 
-  <section class="pivot-panel">
-    <p class="pivot-label">03 / Design process</p><h2>Four iterations. One critical experimental discovery.</h2>
-    <div class="pivot-timeline">
-      <article><span>01 / CONCEPT</span><h3>Defined the measurement</h3><p>Established a fixed pivot-to-force distance and selected controlled mass loading with a cord-and-pulley path.</p></article>
-      <article><span>02 / FIRST BUILD</span><h3>Fabricated and integrated hardware</h3><p>Created SolidWorks assemblies, designed 3D-printed supports and mounted pulleys, fixtures and purchased hardware to the baseplate.</p></article>
-      <article class="pivot-finding"><span>03 / EXPERIMENT</span><h3>Identified angle-dependent resistance</h3><p>Measurements of multiple cutters sometimes disagreed with experienced inspectors' relative rankings. Further testing revealed that resistance changed with the angle of an individual cutter.</p></article>
-      <article><span>04 / FINAL REDESIGN</span><h3>Made geometry adjustable</h3><p>Implemented indexed cutter positioning and a sliding pulley track for 0°, 10°, 20° and 30° testing with nearly perpendicular force application.</p></article>
+<section class="pivot-panel" id="pivot-prototype">
+  <p class="pivot-label">03 / Design and build the first prototype</p>
+  <h2>SolidWorks, 3D printing, and a physical measurement rig.</h2>
+  <div class="pivot-story-split">
+    <div class="pivot-story-copy">
+      <p>I modeled the baseplate, cutter support, and pulley arrangement in SolidWorks, then combined 3D-printed fixtures with purchased hardware and a cord-and-hanging-mass system.</p>
+      <p>Cutouts reduced print time and material; fillets, fastening features, and locating geometry supported assembly. Early testing exposed practical issues with attachment, alignment, cord elasticity, and mass loading.</p>
+      <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/printed-fixtures.jpg" alt="Custom additively manufactured fixture components" loading="lazy"><figcaption>Custom additively manufactured fixture components</figcaption></figure>
+      <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1475.mp4" type="video/mp4"></video><figcaption>Fabrication footage · printed components</figcaption></figure>
     </div>
-  </section>
-
-  <section class="pivot-panel">
-    <div class="pivot-heading"><div><p class="pivot-label">04 / Hardware documentation</p><h2>From SolidWorks to a physical test stand</h2></div><span class="pivot-chip">CAD · DfAM · Prototyping</span></div>
-    <p>The final layout combines a cutter locating fixture, adjustable force-application mechanism, printed components and pulleys. Cutouts reduced print material and time, while fillets and locating features supported assembly and alignment.</p>
-    <div class="pivot-gallery">
-      <figure data-new-media="final-stand.jpg"><img src="img/projects/pivot-test-stand/media/final-stand.jpg" alt="Completed wire cutter pivot torque stand with pulleys and loading cord" loading="lazy"/><figcaption>Assembled hardware · final test stand</figcaption></figure>
-      <figure data-new-media="multi-angle-cad.jpg"><img src="img/projects/pivot-test-stand/media/multi-angle-cad.jpg" alt="SolidWorks multi-angle pivot test stand design" loading="lazy"/><figcaption>Multi-angle fixture and pulley alignment</figcaption></figure>
-      <figure data-new-media="assembly-layout-cad.jpg"><img src="img/projects/pivot-test-stand/media/assembly-layout-cad.jpg" alt="CAD of fixture components arranged on baseplate" loading="lazy"/><figcaption>SolidWorks assembly layout</figcaption></figure>
-      <figure data-new-media="initial-prototype.jpg"><img src="img/projects/pivot-test-stand/media/initial-prototype.jpg" alt="Initial physical test stand with wire cutter, mounting plate and pulleys" loading="lazy"/><figcaption>Initial physical assembly</figcaption></figure>
-      <figure data-new-media="printed-fixtures.jpg"><img src="img/projects/pivot-test-stand/media/printed-fixtures.jpg" alt="3D printed pulley and locating fixtures" loading="lazy"/><figcaption>Rapid-prototyped components</figcaption></figure>
-      <figure data-new-media="torque-sketch.jpg"><img src="img/projects/pivot-test-stand/media/torque-sketch.jpg" alt="Hand drawn torque free body diagram and 88 millimeter lever arm" loading="lazy"/><figcaption>Early torque measurement concept</figcaption></figure>
-      <figure class="pivot-existing-media"><img src="img/projects/pivot-test-stand/test-stand-detail.png" alt="SolidWorks wire cutter fixture and locating hardware" loading="lazy"/><figcaption>Locating fixture CAD</figcaption></figure>
-      <figure class="pivot-existing-media"><img src="img/projects/pivot-test-stand/print-layout.png" alt="CAD layout of additively manufactured fixture components" loading="lazy"/><figcaption>Fixture print layout</figcaption></figure>
+    <div class="pivot-media-stack">
+      <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/initial-prototype.jpg" alt="Initial physical assembly and pulley routing" loading="lazy"><figcaption>Initial physical assembly and pulley routing</figcaption></figure>
+      <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/print-layout.jpg" alt="3D print preparation and fixture layout" loading="lazy"><figcaption>3D print preparation and fixture layout</figcaption></figure>
+      <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1134.mp4" type="video/mp4"></video><figcaption>Mechanical setup with pulleys and hanging masses</figcaption></figure>
     </div>
-  </section>
-
-  <section class="pivot-panel pivot-videos" id="pivot-videos" hidden>
-    <p class="pivot-label">05 / Physical demonstrations</p><h2>Testing, adjustment and fabrication</h2>
-    <div class="pivot-video-grid">
-      <figure data-clip="IMG_1134.mp4"><video controls playsinline preload="metadata" poster="img/projects/pivot-test-stand/media/final-stand.jpg"><source src="img/projects/pivot-test-stand/media/IMG_1134.mp4" type="video/mp4"/></video><figcaption>Assembled pulley and hanging mass apparatus</figcaption></figure>
-      <figure data-clip="IMG_1484.mp4"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1484.mp4" type="video/mp4"/></video><figcaption>Adjustable positioning fixture</figcaption></figure>
-      <figure data-clip="IMG_1584.mp4"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1584.mp4" type="video/mp4"/></video><figcaption>Movable pulley track</figcaption></figure>
-      <figure data-clip="IMG_1475.mp4"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1475.mp4" type="video/mp4"/></video><figcaption>Additive manufacturing footage</figcaption></figure>
+  </div>
+</section>
+<section class="pivot-panel pivot-discovery-panel" id="pivot-discovery">
+  <p class="pivot-label">04 / Experiment and investigate</p>
+  <h2>The first test exposed a missing variable: opening angle.</h2>
+  <div class="pivot-story-split">
+    <div class="pivot-story-copy">
+      <p>I measured resistance on multiple cutters and compared the readings with the QC team's judgments. Sometimes a cutter perceived as looser registered higher friction torque than another.</p>
+      <p>Further testing showed why: <strong>the same cutter's pivot resistance varied with its opening angle.</strong> Measuring only at the closed position did not fully characterize its behavior.</p>
+      <div class="pivot-decision"><span>Finding → design change</span><p>The fixture needed to hold cutters at known opening angles while maintaining a controlled force direction.</p></div>
     </div>
-  </section>
-
-  <section class="pivot-panel pivot-results">
-    <p class="pivot-label">06 / Outcome and quality control</p>
-    <h2>Connecting measurements with QC acceptance criteria</h2>
-    <p>I recorded friction measurements in Excel and associated them with the QC team's qualitative assessments. The resulting dataset provided a basis for evaluating tolerances for pivot tightness rather than relying solely on touch.</p>
-    <div class="pivot-qc"><span>Too loose</span><span>Loose — pass</span><span>Preferred</span><span>Tight — pass</span><span>Too tight</span></div>
-    <div class="pivot-results-grid">
-      <div><h3>Mechanical design</h3><p>Parametric CAD, locating geometry, rapid prototyping and assembly of an adjustable fixture.</p></div>
-      <div><h3>Experimental method</h3><p>Controlled loading, moment-arm geometry and investigation of angle-dependent behavior.</p></div>
-      <div><h3>Manufacturing impact</h3><p>A repeatable measurement workflow to support more consistent tool inspection and quality standards.</p></div>
+    <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/prototype.jpg" alt="Early test fixture used to investigate pivot resistance" loading="lazy"><figcaption>Early test fixture used to investigate pivot resistance</figcaption></figure>
+  </div>
+</section>
+<section class="pivot-panel" id="pivot-redesign">
+  <p class="pivot-label">05 / Redesign and iterate</p>
+  <h2>A multi-angle fixture and movable pulley track.</h2>
+  <p>I redesigned the assembly to locate cutters at 0°, 10°, 20°, and 30° and adjust the pulley position to maintain nearly perpendicular force application at each angle. This required coordinating the cutter geometry, adjustable locating features, and pulley path.</p>
+  <div class="pivot-story-split">
+    <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/multi-angle-cad.jpg" alt="SolidWorks layout for indexed cutter angles and pulley positioning" loading="lazy"><figcaption>SolidWorks layout for indexed cutter angles and pulley positioning</figcaption></figure>
+    <div class="pivot-story-copy">
+      <div class="pivot-spec-row"><span>01</span><p><strong>Indexed cutter positions:</strong> repeatable alignment at multiple opening angles.</p></div>
+      <div class="pivot-spec-row"><span>02</span><p><strong>Adjustable pulley track:</strong> maintain the intended moment arm and force direction.</p></div>
+      <div class="pivot-spec-row"><span>03</span><p><strong>Modular printed fixtures:</strong> fast physical iteration of locating features and mounting interfaces.</p></div>
+      <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/pulley-hardware.jpg" alt="Adjustable pulley mounting hardware" loading="lazy"><figcaption>Adjustable pulley mounting hardware</figcaption></figure>
     </div>
-  </section>
+  </div>
+  <div class="pivot-clips"><figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1484.mp4" type="video/mp4"></video><figcaption>Adjustable cutter support and positioning</figcaption></figure><figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1584.mp4" type="video/mp4"></video><figcaption>Sliding pulley and indexed-track mechanism</figcaption></figure></div>
+</section>
+<section class="pivot-panel pivot-results" id="pivot-result">
+  <p class="pivot-label">06 / Final assembly, testing, and QC application</p>
+  <h2>From operator feel to a repeatable measurement reference.</h2>
+  <div class="pivot-story-split">
+    <div class="pivot-story-copy">
+      <p>The fourth and final iteration brought together the adjustable cutter fixture, pulley path, and incremental mass loading to measure pivot friction across multiple handle angles.</p>
+      <p>I documented friction measurements in Excel and compared them with five QC classifications to support the development of numerical acceptance limits. The outcome was a working test stand and a more systematic inspection method.</p>
+      <div class="pivot-qc"><span>Too loose</span><span>Loose — pass</span><span>Preferred</span><span>Tight — pass</span><span>Too tight</span></div>
+      <div class="pivot-decision"><span>Engineering outcome</span><p>Experimental findings directly informed the redesign; the completed apparatus enabled angle-dependent friction measurements and more consistent tool comparisons.</p></div>
+    </div>
+    <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/final-stand.jpg" alt="Final assembled wire-cutter pivot test stand with hanging masses" loading="lazy"><figcaption>Final assembled wire-cutter pivot test stand with hanging masses</figcaption></figure>
+  </div>
+  <div class="pivot-results-grid">
+    <div><h3>Mechanical design</h3><p>SolidWorks CAD, adjustable fixture geometry, component integration, and DfAM.</p></div>
+    <div><h3>Experimental engineering</h3><p>Moment-arm physics, controlled loading, repeatability, and diagnosis of angle sensitivity.</p></div>
+    <div><h3>Quality engineering</h3><p>Measured torque data compared against the QC team's qualitative acceptance categories.</p></div>
+  </div>
+</section>
   `;
   document.getElementById('projectReturn').before(root);
-  root.querySelectorAll('[data-new-media] img').forEach(img=>{
-    img.addEventListener('error',()=>img.closest('figure').remove());
-  });
-  Promise.all([...root.querySelectorAll('[data-clip]')].map(async figure=>{
-    try {const res=await fetch(figure.querySelector('source').src,{method:'HEAD'});if(!res.ok)figure.remove();}
-    catch{figure.remove();}
-  })).then(()=>{if(root.querySelector('[data-clip]'))root.querySelector('#pivot-videos').hidden=false;});
   const setAngle=(angle)=>{
     const rad=-angle*Math.PI/180,pivotX=100,pivotY=199;
     const hx=pivotX+225*Math.cos(rad),hy=pivotY+225*Math.sin(rad);
