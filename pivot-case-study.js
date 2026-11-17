@@ -170,7 +170,7 @@
    <div class="pivot-spec-row"><span>02</span><p><strong>Arbor press instrumentation</strong> — adding force measurement and controlled input to investigate and standardize press-fit loads.</p></div>
    <a class="pivot-next-link" href="project.html?project=press-fit">Explore the related press-fit standardization project →</a>
   </div>
-  <figure class="pivot-story-media"><img src="img/projects/press-fit/press-fit-assembly.png" alt="Press-fit tooling and fixture CAD related to cutter assembly standardization" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>Follow-on work: fixtures and instrumentation for the cutter assembly process</figcaption></figure>
+  <figure class="pivot-story-media"><img src="img/projects/press-fit/fixture-render-revised.png" alt="Press-fit tooling and fixture CAD related to cutter assembly standardization" loading="lazy"><figcaption>Follow-on work: fixtures and instrumentation for the cutter assembly process</figcaption></figure>
  </div>
 </section>
   `;
