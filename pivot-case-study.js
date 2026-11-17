@@ -71,7 +71,7 @@
     <p>I developed the cutter support, baseplate arrangement and pulley positions in SolidWorks. The fixture constrained the lower handle while leaving the upper handle free to rotate under a known force.</p>
     <p>I included removable locating components and mounting features to accommodate alignment changes during prototyping.</p>
   </div>
-  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/assembly-layout-cad.jpg" alt="SolidWorks assembly layout defining cutter fixture and pulley positioning" loading="lazy"><figcaption>SolidWorks assembly layout defining cutter fixture and pulley positioning</figcaption></figure>
+  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/test-stand-detail.png" alt="SolidWorks full test stand layout showing the cutter, mounting base, and pulley positioning fixtures" loading="lazy"><figcaption>Overall SolidWorks assembly: cutter mount, baseplate, and pulley fixture locations</figcaption></figure>
  </div>
  <div class="pivot-story-split pivot-process-step pivot-alternate">
   <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/printed-fixtures.jpg" alt="3D-printed fixture components after fabrication" loading="lazy"><figcaption>3D-printed fixture components after fabrication</figcaption></figure>
