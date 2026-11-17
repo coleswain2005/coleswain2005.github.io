@@ -62,21 +62,35 @@
   </section>
 
 <section class="pivot-panel" id="pivot-prototype">
-  <p class="pivot-label">03 / Design and build the first prototype</p>
-  <h2>SolidWorks, 3D printing, and a physical measurement rig.</h2>
-  <div class="pivot-story-split">
-    <div class="pivot-story-copy">
-      <p>I modeled the baseplate, cutter support, and pulley arrangement in SolidWorks, then combined 3D-printed fixtures with purchased hardware and a cord-and-hanging-mass system.</p>
-      <p>Cutouts reduced print time and material; fillets, fastening features, and locating geometry supported assembly. Early testing exposed practical issues with attachment, alignment, cord elasticity, and mass loading.</p>
-      <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/printed-fixtures.jpg" alt="Custom additively manufactured fixture components" loading="lazy"><figcaption>Custom additively manufactured fixture components</figcaption></figure>
-      <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1475.mp4" type="video/mp4"></video><figcaption>Fabrication footage · printed components</figcaption></figure>
-    </div>
-    <div class="pivot-media-stack">
-      <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/initial-prototype.jpg" alt="Initial physical assembly and pulley routing" loading="lazy"><figcaption>Initial physical assembly and pulley routing</figcaption></figure>
-      <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/print-layout.jpg" alt="3D print preparation and fixture layout" loading="lazy"><figcaption>3D print preparation and fixture layout</figcaption></figure>
-      <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1134.mp4" type="video/mp4"></video><figcaption>Mechanical setup with pulleys and hanging masses</figcaption></figure>
-    </div>
+ <p class="pivot-label">03 / Prototype — CAD, fabrication and first test</p>
+ <h2>Build the measurement system, then test the assumptions.</h2>
+ <div class="pivot-story-split pivot-process-step">
+  <div class="pivot-story-copy">
+    <p class="pivot-substep">03A / Mechanical design</p>
+    <h3>Lay out the cutter fixture and loading path.</h3>
+    <p>I developed the cutter support, baseplate arrangement and pulley positions in SolidWorks. The fixture constrained the lower handle while leaving the upper handle free to rotate under a known force.</p>
+    <p>I included removable locating components and mounting features to accommodate alignment changes during prototyping.</p>
   </div>
+  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/assembly-layout-cad.jpg" alt="SolidWorks assembly layout defining cutter fixture and pulley positioning" loading="lazy"><figcaption>SolidWorks assembly layout defining cutter fixture and pulley positioning</figcaption></figure>
+ </div>
+ <div class="pivot-story-split pivot-process-step pivot-alternate">
+  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/printed-fixtures.jpg" alt="3D-printed fixture components after fabrication" loading="lazy"><figcaption>3D-printed fixture components after fabrication</figcaption></figure>
+  <div class="pivot-story-copy">
+    <p class="pivot-substep">03B / Rapid prototyping</p>
+    <h3>Manufacture and refine the custom supports.</h3>
+    <p>I used additive manufacturing to produce the locating fixtures and hardware mounts, iterating cutouts, fillets and clearances to reduce print requirements and support assembly.</p>
+    <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1475.mp4" type="video/mp4"></video><figcaption>Fixture components during additive manufacturing</figcaption></figure>
+  </div>
+ </div>
+ <div class="pivot-story-split pivot-process-step">
+  <div class="pivot-story-copy">
+    <p class="pivot-substep">03C / Physical integration</p>
+    <h3>Assemble the first controlled-loading apparatus.</h3>
+    <p>Combining the printed supports with purchased pulleys, cord and incremental hanging masses produced a functional first prototype. Initial use highlighted cord elasticity, alignment and mass-loading details requiring further refinement.</p>
+    <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1134.mp4" type="video/mp4"></video><figcaption>Physical test setup with cord, pulleys and hanging mass</figcaption></figure>
+  </div>
+  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/initial-prototype.jpg" alt="Initial assembled cutter test stand with pulley routing and fixed cutter" loading="lazy"><figcaption>Initial assembled cutter test stand with pulley routing and fixed cutter</figcaption></figure>
+ </div>
 </section>
 <section class="pivot-panel pivot-discovery-panel" id="pivot-discovery">
   <p class="pivot-label">04 / Experiment and investigate</p>
@@ -91,19 +105,27 @@
   </div>
 </section>
 <section class="pivot-panel" id="pivot-redesign">
-  <p class="pivot-label">05 / Redesign and iterate</p>
-  <h2>A multi-angle fixture and movable pulley track.</h2>
-  <p>I redesigned the assembly to locate cutters at 0°, 10°, 20°, and 30° and adjust the pulley position to maintain nearly perpendicular force application at each angle. This required coordinating the cutter geometry, adjustable locating features, and pulley path.</p>
-  <div class="pivot-story-split">
-    <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/multi-angle-cad.jpg" alt="SolidWorks layout for indexed cutter angles and pulley positioning" loading="lazy"><figcaption>SolidWorks layout for indexed cutter angles and pulley positioning</figcaption></figure>
-    <div class="pivot-story-copy">
-      <div class="pivot-spec-row"><span>01</span><p><strong>Indexed cutter positions:</strong> repeatable alignment at multiple opening angles.</p></div>
-      <div class="pivot-spec-row"><span>02</span><p><strong>Adjustable pulley track:</strong> maintain the intended moment arm and force direction.</p></div>
-      <div class="pivot-spec-row"><span>03</span><p><strong>Modular printed fixtures:</strong> fast physical iteration of locating features and mounting interfaces.</p></div>
-      <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/pulley-hardware.jpg" alt="Adjustable pulley mounting hardware" loading="lazy"><figcaption>Adjustable pulley mounting hardware</figcaption></figure>
-    </div>
+ <p class="pivot-label">05 / Mechanical redesign</p>
+ <h2>Make angle-dependent torque measurements possible.</h2>
+ <p>To account for the variation identified during testing, I redesigned the fixture around repeatable cutter positioning at 0°, 10°, 20°, and 30° and a movable pulley location that maintains an approximately perpendicular pulling direction.</p>
+ <div class="pivot-story-split pivot-process-step">
+  <div class="pivot-story-copy">
+   <p class="pivot-substep">05A / Indexed positioning</p>
+   <h3>Control the cutter's opening angle.</h3>
+   <p>The multi-position locating geometry fixes the handle configuration rather than relying on a manually estimated angle. I used SolidWorks assembly configurations to inspect the geometry before printing revised fixtures.</p>
+   <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1484.mp4" type="video/mp4"></video><figcaption>Adjustable cutter-positioning mechanism</figcaption></figure>
   </div>
-  <div class="pivot-clips"><figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1484.mp4" type="video/mp4"></video><figcaption>Adjustable cutter support and positioning</figcaption></figure><figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1584.mp4" type="video/mp4"></video><figcaption>Sliding pulley and indexed-track mechanism</figcaption></figure></div>
+  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/multi-angle-cad.jpg" alt="SolidWorks CAD layout of indexed cutter angles and force-path design" loading="lazy"><figcaption>SolidWorks CAD layout of indexed cutter angles and force-path design</figcaption></figure>
+ </div>
+ <div class="pivot-story-split pivot-process-step pivot-alternate">
+  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/pulley-hardware.jpg" alt="Physical adjustable pulley mounting hardware" loading="lazy"><figcaption>Physical adjustable pulley mounting hardware</figcaption></figure>
+  <div class="pivot-story-copy">
+   <p class="pivot-substep">05B / Force-vector alignment</p>
+   <h3>Move the pulley as the handle angle changes.</h3>
+   <p>Repositioning the pulley preserves the intended perpendicular force direction so measured torque remains comparable across angles. Sliding track geometry, printed mounts and hardware were refined together.</p>
+   <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1584.mp4" type="video/mp4"></video><figcaption>Sliding pulley track and indexed position demonstration</figcaption></figure>
+  </div>
+ </div>
 </section>
 <section class="pivot-panel pivot-results" id="pivot-result">
   <p class="pivot-label">06 / Final assembly, testing, and QC application</p>
