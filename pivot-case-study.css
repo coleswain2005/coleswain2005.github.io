@@ -104,3 +104,18 @@
  .project-detail-page .pivot-clips{grid-template-columns:minmax(0,1fr)}
  .project-detail-page .pivot-case-study h2{max-width:none}
 }
+
+/* Evidence follows each decision, rather than appearing in a separate media gallery. */
+.project-detail-page .pivot-process-step{padding:25px 0;border-top:1px solid #303B47;margin-top:25px;align-items:center}
+.project-detail-page .pivot-process-step:first-of-type{border-top:0;padding-top:5px}
+.project-detail-page .pivot-process-step .pivot-story-copy>h3{font-size:clamp(1.08rem,2vw,1.4rem);margin:8px 0 16px}
+.project-detail-page .pivot-case-study .pivot-substep{font:11px/1.5 'JetBrains Mono',monospace;color:#4B9CD3;letter-spacing:.08em;text-transform:uppercase;margin:0}
+.project-detail-page .pivot-process-step .pivot-video-inline{margin-top:23px;max-width:100%}
+.project-detail-page .pivot-process-step .pivot-video-inline video{width:100%;aspect-ratio:16/9;object-fit:contain}
+.project-detail-page .pivot-process-step>.pivot-story-media img{max-height:570px;object-fit:contain}
+.project-detail-page .pivot-process-step.pivot-alternate{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+@media(max-width:800px){
+ .project-detail-page .pivot-process-step.pivot-alternate{grid-template-columns:minmax(0,1fr)}
+ .project-detail-page .pivot-process-step.pivot-alternate>.pivot-story-media{order:2}
+ .project-detail-page .pivot-process-step.pivot-alternate>.pivot-story-copy{order:1}
+}
