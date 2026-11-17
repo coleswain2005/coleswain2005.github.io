@@ -137,9 +137,9 @@ const projects = {
   'pivot-test-stand': {
     title: 'Instrumented Wire-Cutter Pivot Test Stand',
     tags: ['Test & Analysis', 'Manufacturing'],
-    description: 'Designed and built an instrumented test stand to quantify wire-cutter pivot friction and establish new performance tolerances for precision tools.',
-    specs: [['Measured', 'Pivot friction'], ['Output', 'Performance tolerances'], ['Context', 'Excelta Corp · 2025']],
-    tools: 'Test Stand Design · Instrumentation · Mechanical Testing',
+    description: 'Designed and built an adjustable pivot-friction test stand to convert subjective wire-cutter quality checks into quantitative torque measurements. Iterated the fixture after identifying angle-dependent resistance.',
+    specs: [['Design', '4 iterations'], ['Positions', '0° · 10° · 20° · 30°'], ['Context', 'Excelta Corp · 2025']],
+    tools: 'SolidWorks · DfAM · Mechanical Testing · Experimental Design · Quality Control',
     heroImage: {
       src: 'img/projects/pivot-test-stand/test-stand-top.png',
       alt: 'Top view rendering of the wire-cutter pivot test stand',
