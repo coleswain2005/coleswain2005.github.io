@@ -1,4 +1,4 @@
-/* Scoped case study. Demo data is invented, not Excelta data. */
+/* Python manufacturing workflow case study and sample quote lookup. */
 (() => {
   if (new URLSearchParams(location.search).get('project') !== 'python-workflow') return;
   document.getElementById('projectDescription').textContent = 'Developed a Python/pandas tool that transformed historical quote and bill-of-materials records into a searchable manufacturing-planning reference. A full or partial quote number returned associated components and whether CNC machining was required.';
@@ -26,15 +26,15 @@
       </div>
     </div>
     <div class="py-section py-panel">
-      <div class="py-heading"><div><p class="project-detail-label">02 / Interactive explanation</p><h2>Try the quote lookup</h2></div><span class="py-demo-label">Synthetic example</span></div>
-      <p>This small browser demonstration illustrates the search and classification logic. All quote numbers, components, and results are invented examples; no Excelta data is loaded or exposed.</p>
+      <div class="py-heading"><div><p class="project-detail-label">02 / Interactive explanation</p><h2>Try the quote lookup</h2></div><span class="py-demo-label">Sample data</span></div>
+      <p>Enter a quote number to see how component matching and CNC classification work. This demo uses sample data rather than company records.</p>
       <form id="pyDemoForm" class="py-form">
         <label for="pyDemoInput">Quote number (partial matching allowed)</label>
         <div><input id="pyDemoInput" type="text" value="101" maxlength="25" spellcheck="false" autocomplete="off" placeholder="Enter 101, 202, or 999"><button type="submit">Look up parts →</button></div>
       </form>
       <div class="py-examples">Try: <button type="button" data-example="101">101</button><button type="button" data-example="202">202</button><button type="button" data-example="999">999</button></div>
       <div id="pyDemoOutput" class="py-results" aria-live="polite"></div>
-      <p class="py-footnote">Illustrative input and output only. Not connected to internal systems.</p>
+      <p class="py-footnote">Example records for demonstrating the lookup interface.</p>
     </div>
     <div class="py-section py-panel">
       <p class="project-detail-label">03 / Design and implementation</p>
@@ -45,8 +45,8 @@
         <div><span>03 / QUERY</span><h3>Search by quote</h3><p>Accept full or partial quote input and select matching quote–component rows.</p></div>
         <div><span>04 / OUTPUT</span><h3>Flag CNC requirements</h3><p>Compare component identifiers with the CNC-required set and display readable quote, part, and status columns.</p></div>
       </div>
-      <div class="py-code-heading"><h3>The actual notebook structure</h3><small>Recreated from the uploaded JupyterLab screenshots</small></div>
-      <p>Rather than embedding an unreadable full-screen notebook screenshot, this presentation recreates the meaningful cells as legible, selectable code. The function uses the same <code>Q_P_CNC</code>, <code>Q_Number</code>, and <code>Product_Number</code> identifiers as my original notebook, with the formatting cleaned up for the web.</p>
+      <div class="py-code-heading"><h3>Python implementation</h3><small>JupyterLab · pandas</small></div>
+      <p>The script is organized into three stages: cleaning the quote/BOM data, matching quotes to components, and identifying CNC requirements.</p>
 
       <div class="py-notebook">
         <div class="py-notebook-top"><span class="py-notebook-dot"></span><span class="py-notebook-dot"></span><span class="py-notebook-dot"></span><strong>Manufacturing quote lookup</strong><span>Python 3 · pandas · JupyterLab</span></div>
@@ -122,8 +122,8 @@ cnc_required_parts = {
           <div class="py-notebook-main">
             <div class="py-cell-header"><span>03 / Run & inspect results</span><button type="button" class="py-copy-code">Copy code</button></div>
             <pre class="py-code py-highlight"><code>Q_P_CNC(data, cnc_required_parts)</code></pre>
-            <div class="py-notebook-output" aria-label="Illustrative notebook output">
-              <div class="py-output-label">Example output format — adapted from the supplied run screenshots</div>
+            <div class="py-notebook-output" aria-label="Quote lookup output">
+              <div class="py-output-label">Quote lookup output</div>
               <pre>Enter a Quote number (partial match allowed): 101
 Q_Number  Product_Number      CNC_Status
    2101A           9ILF    CNC REQUIRED</pre>
@@ -136,16 +136,16 @@ Q_Number  Product_Number      CNC_Status
         <div><strong>Why normalize first?</strong><p>Consistent part identifiers make exact membership tests against the CNC-required set possible.</p></div>
         <div><strong>Why copy the filtered rows?</strong><p>The final notebook resolved the pandas <code>SettingWithCopyWarning</code> by creating an explicit copy before adding the status column.</p></div>
       </div>
-      <p class="py-footnote">The code above is a readable adaptation of the original screenshot content, with a minor search improvement (<code>regex=False</code>). The run output reproduces the example shown in your screenshots. This isn't a live Python interpreter; the separate interactive lookup above is a synthetic browser demonstration.</p>
+      <p class="py-footnote"></p>
     </div>
     <div class="py-section py-panel">
       <p class="project-detail-label">04 / Results and validation</p>
       <h2>A functioning manufacturing-planning lookup</h2>
-      <p>The final notebook accepted quote-number input and returned matched components with CNC-required or no-CNC classifications. The notebook-style output reproduced above shows the result format from a successful run. It demonstrates Python data wrangling applied to a real production-planning problem.</p>
+      <p>The finished tool accepts a quote number and displays matching components with their CNC-required or no-CNC classifications, replacing repetitive manual searches through BOM records.</p>
       <div class="py-results-grid">
         <div><h3>Functional result</h3><p>Quote search, component retrieval, and CNC classification in one repeatable workflow.</p></div>
         <div><h3>Debugging</h3><p>Resolved an undefined-variable error and a pandas chained-assignment warning by explicitly copying filtered rows.</p></div>
-        <div><h3>Evidence limit</h3><p>No measured before-and-after time study was provided, so no numerical workflow speedup is claimed.</p></div>
+        <div><h3>Practical application</h3><p>The result connects quote history with manufacturing requirements to support production planning and quoting decisions.</p></div>
       </div>
     </div>`;
   document.getElementById('projectReturn').before(host);
