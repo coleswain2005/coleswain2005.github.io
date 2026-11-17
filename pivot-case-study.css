@@ -161,3 +161,28 @@
 .project-detail-page .pivot-principle-details strong{font:1.15rem 'JetBrains Mono',monospace;color:#68AFE1;min-width:18px}
 .project-detail-page .pivot-principle-details span{color:#C2CBD3;font-size:.88rem}
 @media(max-width:680px){.project-detail-page .pivot-principle-card{grid-template-columns:minmax(0,1fr)}.project-detail-page .pivot-principle-equation{border-right:0;border-bottom:1px solid #303C49}.project-detail-page .pivot-principle-details{padding:8px 24px}}
+
+/* Compact project narrative and correctly oriented source sketch. */
+.project-detail-page .pivot-sketch-figure{overflow:hidden}
+.project-detail-page .pivot-sketch-image{position:relative;aspect-ratio:4/3;background:#131b23;overflow:hidden}
+.project-detail-page .pivot-sketch-image img{
+ position:absolute;top:50%;left:50%;width:75%;max-width:none;height:auto;max-height:none;
+ transform:translate(-50%,-50%) rotate(-90deg);object-fit:contain;display:block
+}
+.project-detail-page .pivot-intro .pivot-story-split{align-items:center}
+.project-detail-page .pivot-intro .pivot-story-copy h3{font-size:1.12rem;margin:22px 0 10px}
+.project-detail-page .pivot-intro .pivot-principle-card{grid-template-columns:minmax(0,1fr);margin:20px 0 12px}
+.project-detail-page .pivot-intro .pivot-principle-equation{padding:17px 20px 12px;border-right:0;border-bottom:1px solid #303C49;gap:5px}
+.project-detail-page .pivot-intro .pivot-principle-equation strong{font-size:clamp(1.2rem,2vw,1.7rem)}
+.project-detail-page .pivot-intro .pivot-principle-details{padding:7px 20px;display:flex;justify-content:space-between;gap:16px}
+.project-detail-page .pivot-intro .pivot-principle-details>div{padding:8px 0;border-bottom:0;gap:8px}
+.project-detail-page .pivot-intro .pivot-principle-details span{font-size:.75rem}
+.project-detail-page .pivot-intro .pivot-method-summary{margin-top:8px;font-size:.85rem}
+.project-detail-page .pivot-panel .pivot-process-step{padding:18px 0;margin-top:15px}
+.project-detail-page .pivot-panel .pivot-process-step h3{margin-top:8px}
+.project-detail-page .pivot-results-data{margin-top:28px;padding-top:24px;border-top:1px solid #2C3C4A}
+.project-detail-page .pivot-results-data .pivot-evidence-stats{margin:0 0 20px}
+@media(max-width:800px){
+ .project-detail-page .pivot-intro .pivot-principle-details{flex-wrap:wrap}
+ .project-detail-page .pivot-intro .pivot-story-split{align-items:stretch}
+}
