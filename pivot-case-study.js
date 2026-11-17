@@ -57,43 +57,39 @@
   <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/final-stand.jpg" alt="Initial wire cutter torque test stand before angle adjustment redesign" loading="lazy"><figcaption>First functional build — before the multi-angle redesign</figcaption></figure>
  </div>
 </section>
-<section class="pivot-panel pivot-discovery-panel" id="pivot-discovery">
-  <p class="pivot-label">03 / Test finding</p>
-  <h2>Testing revealed angle-dependent friction.</h2>
-  <div class="pivot-story-split">
+<section class="pivot-panel pivot-discovery-panel pivot-test-redesign" id="pivot-discovery">
+  <p class="pivot-label">03 / Test finding → mechanical redesign</p>
+  <h2>A hidden variable changed the design.</h2>
+  <div class="pivot-story-split pivot-process-step pivot-finding-row">
     <div class="pivot-story-copy">
-      <p>I measured resistance on multiple cutters and compared the readings with the QC team's judgments. Sometimes a cutter perceived as looser registered higher friction torque than another.</p>
-      <p>Further testing showed why: <strong>the same cutter's pivot resistance varied with its opening angle.</strong> Measuring only at the closed position did not fully characterize its behavior.</p>
-      <div class="pivot-decision"><span>Finding → design change</span><p>The fixture needed to hold cutters at known opening angles while maintaining a controlled force direction.</p></div>
+      <p class="pivot-substep">03A / Experimental finding</p>
+      <h3>Opening resistance depends on handle angle.</h3>
+      <p>Early measurements did not always agree with inspectors' assessments. Testing revealed that resistance changed as the same cutter opened—so a single closed-position reading could not characterize its behavior.</p>
+      <div class="pivot-decision"><span>Finding → new requirement</span><p>Measure at defined handle angles while keeping the applied force perpendicular to the handle.</p></div>
     </div>
-
+    <figure class="pivot-story-media">
+      <img src="img/projects/pivot-test-stand/media/multi-angle-cad.jpg" alt="SolidWorks multi-angle cutter fixture with construction geometry for pulley positions" loading="lazy">
+      <figcaption>SolidWorks redesign — indexed cutter positions and force-path geometry</figcaption>
+    </figure>
   </div>
-</section>
-<section class="pivot-panel" id="pivot-redesign">
- <p class="pivot-label">04 / Multi-angle redesign</p>
- <h2>Control angle and force direction.</h2>
- <p>I added indexed cutter positions at 0°, 10°, 20°, and 30°, along with an adjustable pulley track to preserve perpendicular loading as the handle moved.</p>
- <div class="pivot-story-split pivot-process-step">
-  <div class="pivot-story-copy">
-   <p class="pivot-substep">04A / Angle control</p>
-   <h3>Control the cutter's opening angle.</h3>
-   <p>SolidWorks configurations and printed locating features enabled repeatable cutter positioning.</p>
-   
+  <div class="pivot-story-split pivot-process-step pivot-alternate pivot-redesign-row" id="pivot-redesign">
+    <figure class="pivot-story-media">
+      <img src="img/projects/pivot-test-stand/media/pulley-hardware.jpg" alt="Adjustable pulley hardware for multi-angle cutter friction tests" loading="lazy">
+      <figcaption>Adjustable pulley mount developed for the redesigned test stand</figcaption>
+    </figure>
+    <div class="pivot-story-copy">
+      <p class="pivot-substep">03B / Design response</p>
+      <h3>Index the cutter. Reposition the pulley.</h3>
+      <p>I developed locating features for <strong>0°, 10°, 20°, and 30°</strong> opening positions and a movable pulley track to maintain the loading direction. SolidWorks configurations guided the geometry; printed iterations refined the physical hardware.</p>
+      <figure class="pivot-video-inline">
+        <video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1584.mp4" type="video/mp4"></video>
+        <figcaption>Movable pulley track — physical mechanism demonstration</figcaption>
+      </figure>
+    </div>
   </div>
-  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/multi-angle-cad.jpg" alt="SolidWorks CAD layout of indexed cutter angles and force-path design" loading="lazy"><figcaption>SolidWorks CAD layout of indexed cutter angles and force-path design</figcaption></figure>
- </div>
- <div class="pivot-story-split pivot-process-step pivot-alternate">
-  <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/pulley-hardware.jpg" alt="Physical adjustable pulley mounting hardware" loading="lazy"><figcaption>Physical adjustable pulley mounting hardware</figcaption></figure>
-  <div class="pivot-story-copy">
-   <p class="pivot-substep">04B / Perpendicular loading</p>
-   <h3>Reposition the pulley with the handle.</h3>
-   <p>I used construction geometry to place a movable pulley along the required force path, then refined the slotted track and mounts through printed iterations.</p>
-   <figure class="pivot-video-inline"><video controls playsinline preload="metadata"><source src="img/projects/pivot-test-stand/media/IMG_1584.mp4" type="video/mp4"></video><figcaption>Sliding pulley track and indexed position demonstration</figcaption></figure>
-  </div>
- </div>
 </section>
 <section class="pivot-panel pivot-results" id="pivot-result">
-  <p class="pivot-label">05 / Final apparatus and measured outcomes</p>
+  <p class="pivot-label">04 / Final apparatus and measured outcomes</p>
   <h2>Final stand and 60 experimental measurements.</h2>
   <div class="pivot-story-split">
     <div class="pivot-story-copy">
@@ -110,7 +106,7 @@
 </div>
 </section>
 <section class="pivot-panel pivot-next" id="pivot-next">
- <p class="pivot-label">06 / Root-cause investigation</p>
+ <p class="pivot-label">05 / Root-cause investigation</p>
  <h2>Tracing variation to the assembly process.</h2>
  <p>Quantifying the variation led to a follow-on question: could cutter assembly and press-fit conditions be driving inconsistent pivot friction?</p>
  <div class="pivot-story-split">
