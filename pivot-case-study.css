@@ -148,3 +148,16 @@
  .project-detail-page .pivot-evidence-stats strong{font-size:1.5rem}
  .project-detail-page .pivot-evidence-stats span{font-size:10px}
 }
+
+/* A concise, non-interactive measurement principle for portfolio readers. */
+.project-detail-page .pivot-principle-card{display:grid;grid-template-columns:1.1fr 1fr;gap:0;margin:28px 0 18px;border:1px solid #303C49;border-radius:6px;background:#0D1218;overflow:hidden}
+.project-detail-page .pivot-principle-equation{display:flex;flex-direction:column;justify-content:center;gap:13px;padding:clamp(24px,3vw,42px);border-right:1px solid #303C49}
+.project-detail-page .pivot-principle-overline{font:11px/1.5 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.09em;color:#68AFE1}
+.project-detail-page .pivot-principle-equation strong{font:clamp(1.3rem,2.4vw,2.15rem)/1.4 'JetBrains Mono',monospace;color:#E8EAE6;white-space:normal}
+.project-detail-page .pivot-principle-equation>span:last-child{font-size:.82rem;color:#9BA9B6}
+.project-detail-page .pivot-principle-details{padding:20px clamp(18px,3vw,32px);display:grid;align-content:center}
+.project-detail-page .pivot-principle-details>div{display:flex;align-items:baseline;gap:17px;padding:14px 0;border-bottom:1px solid #26333F}
+.project-detail-page .pivot-principle-details>div:last-child{border-bottom:0}
+.project-detail-page .pivot-principle-details strong{font:1.15rem 'JetBrains Mono',monospace;color:#68AFE1;min-width:18px}
+.project-detail-page .pivot-principle-details span{color:#C2CBD3;font-size:.88rem}
+@media(max-width:680px){.project-detail-page .pivot-principle-card{grid-template-columns:minmax(0,1fr)}.project-detail-page .pivot-principle-equation{border-right:0;border-bottom:1px solid #303C49}.project-detail-page .pivot-principle-details{padding:8px 24px}}
