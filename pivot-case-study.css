@@ -212,3 +212,15 @@
  .project-detail-page .pivot-results-data .pivot-evidence-stats strong{font-size:1.75rem}
  .project-detail-page .pivot-results-data .pivot-evidence-stats span{font-size:9px}
 }
+
+/* Closing bridge: two distinct follow-on engineering projects. */
+.project-detail-page .pivot-next>h2{max-width:32ch}
+.project-detail-page .pivot-next>p:not(.pivot-label){max-width:75ch;margin-bottom:26px}
+.project-detail-page .pivot-follow-on-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.project-detail-page .pivot-follow-on-card{min-width:0;background:#0D1218;border:1px solid #303C49;border-radius:6px;overflow:hidden}
+.project-detail-page .pivot-follow-on-card img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#151b21}
+.project-detail-page .pivot-follow-on-copy{padding:20px 22px 22px}
+.project-detail-page .pivot-follow-on-copy .pivot-substep{margin:0 0 9px}
+.project-detail-page .pivot-follow-on-copy h3{font-size:clamp(1.02rem,1.8vw,1.2rem);margin:0 0 9px}
+.project-detail-page .pivot-follow-on-copy p:last-child{font-size:.88rem;line-height:1.65;margin:0}
+@media(max-width:640px){.project-detail-page .pivot-follow-on-grid{grid-template-columns:minmax(0,1fr)}}
