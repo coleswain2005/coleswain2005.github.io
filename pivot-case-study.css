@@ -186,3 +186,29 @@
  .project-detail-page .pivot-intro .pivot-principle-details{flex-wrap:wrap}
  .project-detail-page .pivot-intro .pivot-story-split{align-items:stretch}
 }
+
+/* Test finding and redesign: two self-contained evidence-led rows, without an empty half-panel. */
+.project-detail-page .pivot-test-redesign h2{max-width:none;margin-bottom:18px}
+.project-detail-page .pivot-test-redesign .pivot-story-split{align-items:center;gap:clamp(20px,3vw,42px)}
+.project-detail-page .pivot-test-redesign .pivot-process-step{margin-top:0;padding:18px 0;border-top:0}
+.project-detail-page .pivot-test-redesign .pivot-redesign-row{margin-top:22px;padding-top:26px;border-top:1px solid #30404F}
+.project-detail-page .pivot-test-redesign .pivot-story-copy>h3{font-size:clamp(1.12rem,2.1vw,1.5rem);margin:9px 0 12px}
+.project-detail-page .pivot-test-redesign .pivot-story-copy>p{line-height:1.65}
+.project-detail-page .pivot-test-redesign .pivot-decision{margin-top:18px;padding:16px 18px}
+.project-detail-page .pivot-test-redesign .pivot-decision p{font-size:.85rem;line-height:1.55}
+.project-detail-page .pivot-test-redesign .pivot-story-media img{max-height:390px}
+.project-detail-page .pivot-test-redesign .pivot-video-inline{max-width:420px;margin-top:16px}
+.project-detail-page .pivot-test-redesign .pivot-video-inline video{max-height:230px}
+.project-detail-page .pivot-results-data .pivot-evidence-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 24px}
+.project-detail-page .pivot-results-data .pivot-evidence-stats>div{min-height:100px;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;gap:7px}
+.project-detail-page .pivot-results-data .pivot-evidence-stats strong{font-size:clamp(1.9rem,3vw,2.5rem);line-height:1}
+.project-detail-page .pivot-results-data .pivot-evidence-stats span{font-size:11px}
+@media(max-width:720px){
+ .project-detail-page .pivot-test-redesign .pivot-story-split{grid-template-columns:minmax(0,1fr)}
+ .project-detail-page .pivot-test-redesign .pivot-alternate>.pivot-story-media{order:2}
+ .project-detail-page .pivot-test-redesign .pivot-alternate>.pivot-story-copy{order:1}
+ .project-detail-page .pivot-results-data .pivot-evidence-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .project-detail-page .pivot-results-data .pivot-evidence-stats>div{padding:12px 9px;min-height:85px}
+ .project-detail-page .pivot-results-data .pivot-evidence-stats strong{font-size:1.75rem}
+ .project-detail-page .pivot-results-data .pivot-evidence-stats span{font-size:9px}
+}
