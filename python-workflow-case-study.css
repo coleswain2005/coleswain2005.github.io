@@ -68,7 +68,7 @@
 .project-detail-page .py-notebook-cell { display:grid; grid-template-columns:80px minmax(0,1fr); gap:0; border-bottom:1px solid #333B47; }
 .project-detail-page .py-notebook-last { border-bottom:0; }
 .project-detail-page .py-notebook-sidebar { background:#151D25; color:#4B9CD3; padding:21px 10px; text-align:right; font:11px 'JetBrains Mono',monospace; }
-.project-detail-page .py-notebook-out { display:block; margin-top:76px; color:#9AA5B1; }
+
 .project-detail-page .py-notebook-main { min-width:0; padding:0; }
 .project-detail-page .py-cell-header { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 20px; border-bottom:1px solid #27323E; color:#9DACBA; text-transform:uppercase; letter-spacing:.08em; font:10px 'JetBrains Mono',monospace; }
 .project-detail-page .py-copy-code { background:transparent; color:#4B9CD3; border:1px solid #365B76; border-radius:4px; padding:7px 10px; cursor:pointer; font:10px 'JetBrains Mono',monospace; text-transform:none; letter-spacing:0; }
@@ -94,3 +94,7 @@
  .project-detail-page .py-code-takeaways { grid-template-columns:minmax(0,1fr); }
  .project-detail-page .py-notebook-top>span:last-child { flex-basis:100%; margin:5px 0 0; }
 }
+
+/* Output prompt belongs to the results region, independent of input height. */
+.project-detail-page .py-output-label { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+.project-detail-page .py-output-prompt { color:#4B9CD3; font-size:11px; white-space:nowrap; }
