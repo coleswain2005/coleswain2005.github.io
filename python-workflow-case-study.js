@@ -45,42 +45,98 @@
         <div><span>03 / QUERY</span><h3>Search by quote</h3><p>Accept full or partial quote input and select matching quote–component rows.</p></div>
         <div><span>04 / OUTPUT</span><h3>Flag CNC requirements</h3><p>Compare component identifiers with the CNC-required set and display readable quote, part, and status columns.</p></div>
       </div>
-      <div class="py-code-heading"><h3>Core quote lookup & CNC classification</h3><small>Selected Python excerpt · adapted from my notebook</small></div>
-      <p>The key function filters the cleaned quote–component table by a complete or partial quote number. Each matching component is then classified against the set of parts requiring CNC operations. The lookup returns a compact, readable result rather than an entire spreadsheet.</p>
-      <pre class="py-code"><code>def lookup_quote(query, data, cnc_parts):
-    # Match either an entire quote number or a partial entry
-    matches = data[
-        data["quote"].str.contains(
-            str(query).upper(), regex=False, na=False
+      <div class="py-code-heading"><h3>The actual notebook structure</h3><small>Recreated from the uploaded JupyterLab screenshots</small></div>
+      <p>Rather than embedding an unreadable full-screen notebook screenshot, this presentation recreates the meaningful cells as legible, selectable code. The function uses the same <code>Q_P_CNC</code>, <code>Q_Number</code>, and <code>Product_Number</code> identifiers as my original notebook, with the formatting cleaned up for the web.</p>
+
+      <div class="py-notebook">
+        <div class="py-notebook-top"><span class="py-notebook-dot"></span><span class="py-notebook-dot"></span><span class="py-notebook-dot"></span><strong>Manufacturing quote lookup</strong><span>Python 3 · pandas · JupyterLab</span></div>
+        <div class="py-notebook-cell">
+          <div class="py-notebook-sidebar"><span>In [1]:</span></div>
+          <div class="py-notebook-main">
+            <div class="py-cell-header"><span>01 / Data preparation</span><button type="button" class="py-copy-code">Copy code</button></div>
+            <pre class="py-code py-highlight"><code>import pandas as pd
+
+data = pd.read_excel(
+    "QuoteBOM.xlsx", sheet_name="Sheet1",
+    header=None, usecols=[1, 2]
+)
+data.columns = ["Q_Number", "Product_Number"]
+
+# Standardize quote numbers and part identifiers
+data["Q_Number"] = (
+    data["Q_Number"].astype(str).str.upper()
+    .str.replace(r"^Q-?|Q", "", regex=True)
+)
+data["Product_Number"] = (
+    data["Product_Number"].astype(str).str.strip()
+    .str.upper().str.replace("-", "", regex=False)
+)
+
+# Focus the lookup on primary manufactured components
+EXCLUDED_PREFIXES = ("GP", "SP", "DUR", "MISC",
+                     "SEMITRON", "ONLINE", "316")
+data = data[~data["Product_Number"].str.startswith(
+    EXCLUDED_PREFIXES
+)].copy()
+
+cnc_required_parts = {
+    "B2F", "B3F", "B3LF", "B3",
+    "9I", "9ILF", "9IL", "9AIF"
+}</code></pre>
+          </div>
+        </div>
+        <div class="py-notebook-cell">
+          <div class="py-notebook-sidebar"><span>In [2]:</span></div>
+          <div class="py-notebook-main">
+            <div class="py-cell-header"><span>02 / Quote lookup function</span><button type="button" class="py-copy-code">Copy code</button></div>
+            <pre class="py-code py-highlight"><code>def Q_P_CNC(data, cnc_required_parts):
+    # Search a full or partial quote number
+    user_input_q = input(
+        "Enter a Quote number (partial match allowed): "
+    ).strip().upper()
+
+    input_q_rows = data[
+        data["Q_Number"].str.contains(
+            user_input_q, regex=False, na=False
         )
     ].copy()
 
-    if matches.empty:
-        return "No matching quote found"
+    if input_q_rows.empty:
+        print("No matching Quote found.")
+        return
 
-    matches["cnc_status"] = matches["part"].apply(
-        lambda part: "CNC REQUIRED" if part in cnc_parts else "No CNC"
+    # Classify each matching primary component
+    input_q_rows["CNC_Status"] = (
+        input_q_rows["Product_Number"].apply(
+            lambda p: "CNC REQUIRED"
+            if p in cnc_required_parts else "No CNC"
+        )
     )
-    return matches[["quote", "part", "cnc_status"]]</code></pre>
-      <p class="py-code-explanation"><strong>Engineering decision:</strong> separating the search from the CNC-required part set makes it easier to maintain the classification logic as production requirements change. Copying the matched rows also prevents the pandas chained-assignment warning encountered during development.</p>
-      <details class="py-code-details">
-        <summary><span><strong>View data preparation & filtering</strong><small>Supporting pandas excerpt</small></span><span class="py-code-toggle" aria-hidden="true">+</span></summary>
-        <div class="py-code-details-body">
-          <p>Before searching, the workflow cleaned imported quote and part identifiers and excluded accessory families that did not belong in the primary manufacturing analysis.</p>
-          <pre class="py-code"><code># Load and standardize the relevant quote/BOM columns
-data = pd.read_excel("quotes.xlsx", usecols=[1, 2])
-data.columns = ["quote", "part"]
-
-data["quote"] = data["quote"].astype(str).str.strip().str.upper()
-data["part"] = data["part"].astype(str).str.strip().str.upper()
-
-# Exclude non-primary part families before classification
-data = data[~data["part"].str.startswith(
-    tuple(excluded_prefixes), na=False
-)].copy()</code></pre>
+    print(input_q_rows[
+        ["Q_Number", "Product_Number", "CNC_Status"]
+    ].to_string(index=False))</code></pre>
+          </div>
         </div>
-      </details>
-      <p class="py-footnote">These are concise adaptations of the working notebook, not a complete source listing. Sample filenames and variable names make the logic readable; the interactive demonstration above uses invented data.</p>
+        <div class="py-notebook-cell py-notebook-last">
+          <div class="py-notebook-sidebar"><span>In [3]:</span><span class="py-notebook-out">Out:</span></div>
+          <div class="py-notebook-main">
+            <div class="py-cell-header"><span>03 / Run & inspect results</span><button type="button" class="py-copy-code">Copy code</button></div>
+            <pre class="py-code py-highlight"><code>Q_P_CNC(data, cnc_required_parts)</code></pre>
+            <div class="py-notebook-output" aria-label="Illustrative notebook output">
+              <div class="py-output-label">Example output format — adapted from the supplied run screenshots</div>
+              <pre>Enter a Quote number (partial match allowed): 101
+Q_Number  Product_Number      CNC_Status
+   2101A           9ILF    CNC REQUIRED</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-code-takeaways">
+        <div><strong>Why normalize first?</strong><p>Consistent part identifiers make exact membership tests against the CNC-required set possible.</p></div>
+        <div><strong>Why copy the filtered rows?</strong><p>The final notebook resolved the pandas <code>SettingWithCopyWarning</code> by creating an explicit copy before adding the status column.</p></div>
+      </div>
+      <p class="py-footnote">The code above is a readable adaptation of the original screenshot content, with a minor search improvement (<code>regex=False</code>). The run output reproduces the example shown in your screenshots. This isn't a live Python interpreter; the separate interactive lookup above is a synthetic browser demonstration.</p>
     </div>
     <div class="py-section py-panel">
       <p class="project-detail-label">04 / Results and validation</p>
@@ -121,5 +177,31 @@ data = data[~data["part"].str.startswith(
   }
   document.getElementById('pyDemoForm').addEventListener('submit',event=>{event.preventDefault();render()});
   document.querySelectorAll('.py-examples button').forEach(button=>button.addEventListener('click',()=>{input.value=button.dataset.example;render();input.focus()}));
+  // Lightweight, dependency-free notebook syntax presentation and copy controls.
+  host.querySelectorAll('.py-highlight code').forEach(code => {
+    const original = code.textContent;
+    const escape = value => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const tokenRE = /(#.*$)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')|\b(def|return|if|else|lambda|import|as|in|not|True|False|None)\b|\b(print|input|str|tuple)\b/gm;
+    let html = '', previous = 0, match;
+    while ((match = tokenRE.exec(original)) !== null) {
+      html += escape(original.slice(previous, match.index));
+      const cls = match[1] ? 'py-syntax-comment' : match[2] ? 'py-syntax-string' : match[3] ? 'py-syntax-keyword' : 'py-syntax-builtin';
+      html += '<span class="' + cls + '">' + escape(match[0]) + '</span>';
+      previous = tokenRE.lastIndex;
+    }
+    html += escape(original.slice(previous));
+    code.innerHTML = html;
+    code.dataset.copySource = original;
+  });
+  host.querySelectorAll('.py-copy-code').forEach(button => button.addEventListener('click', async () => {
+    const source = button.closest('.py-notebook-main').querySelector('code').dataset.copySource;
+    try {
+      await navigator.clipboard.writeText(source);
+      button.textContent = 'Copied';
+      button.blur();
+    } catch {
+      button.textContent = 'Select code to copy';
+    }
+  }));
   render();
 })();
