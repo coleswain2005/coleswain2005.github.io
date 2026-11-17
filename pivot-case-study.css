@@ -161,3 +161,33 @@
 .project-detail-page .pivot-principle-details strong{font:1.15rem 'JetBrains Mono',monospace;color:#68AFE1;min-width:18px}
 .project-detail-page .pivot-principle-details span{color:#C2CBD3;font-size:.88rem}
 @media(max-width:680px){.project-detail-page .pivot-principle-card{grid-template-columns:minmax(0,1fr)}.project-detail-page .pivot-principle-equation{border-right:0;border-bottom:1px solid #303C49}.project-detail-page .pivot-principle-details{padding:8px 24px}}
+
+/* Seven-stage chronological engineering case study. */
+.project-detail-page .pivot-concept-layout{align-items:center}
+.project-detail-page .pivot-sketch-upright{background:#111920}
+.project-detail-page .pivot-sketch-upright img{
+  display:block;width:68%;height:auto;max-height:none!important;margin:0 auto;
+  transform:rotate(90deg) scale(1.08);transform-origin:center center;
+  object-fit:contain
+}
+.project-detail-page .pivot-sketch-upright{display:flex;flex-direction:column;justify-content:center}
+.project-detail-page .pivot-sketch-upright img{flex:none}
+.project-detail-page .pivot-sketch-upright:has(img){padding-top:55px}
+.project-detail-page .pivot-sketch-upright figcaption{margin-top:55px}
+.project-detail-page .pivot-theory-follow{border-top:1px solid #2E3B48;margin-top:32px;padding-top:30px}
+.project-detail-page .pivot-theory-follow>h3{font-size:clamp(1.2rem,2vw,1.55rem);margin:0 0 14px;color:#E8EAE6}
+.project-detail-page .pivot-theory-follow>p:not(.pivot-method-summary){max-width:77ch}
+.project-detail-page .pivot-results-data{border-top:1px solid #2E3B48;margin-top:34px;padding-top:30px}
+.project-detail-page .pivot-results-data>h3{font-size:clamp(1.15rem,2vw,1.45rem);margin:0 0 12px}
+.project-detail-page .pivot-results-data>p{margin:0 0 18px}
+.project-detail-page .pivot-results-data .pivot-evidence-stats{margin:18px 0 32px}
+.project-detail-page .pivot-results-data .pivot-measurement-head{margin-top:16px}
+.project-detail-page .pivot-story-copy>p{margin-top:0;margin-bottom:16px}
+.project-detail-page .pivot-story-copy>p+p{margin-top:0}
+.project-detail-page .pivot-panel .pivot-process-step{margin-top:28px}
+.project-detail-page .pivot-panel .pivot-process-step+ .pivot-process-step{margin-top:18px}
+@media(max-width:800px){
+ .project-detail-page .pivot-sketch-upright{padding-top:32px!important}
+ .project-detail-page .pivot-sketch-upright img{width:65%}
+ .project-detail-page .pivot-sketch-upright figcaption{margin-top:35px}
+}
