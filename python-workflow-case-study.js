@@ -150,10 +150,16 @@ Q_Number  Product_Number      CNC_Status
     </div>`;
   document.getElementById('projectReturn').before(host);
   const rows=[
-    ['DEMO-101','COMP-A',true],['DEMO-101','COMP-B',false],
-    ['DEMO-102','COMP-C',true],['DEMO-202','COMP-D',false],
-    ['DEMO-202','COMP-E',true],['DEMO-303','COMP-F',false],
-    ['DEMO-999','COMP-G',true],['DEMO-999','COMP-H',false]
+    ['DEMO-101','COMP-A',true],
+    ['DEMO-101','COMP-B',false],
+    ['DEMO-202','COMP-C',false],
+    ['DEMO-202','COMP-D',true],
+    ['DEMO-202','COMP-E',false],
+    ['DEMO-999','COMP-F',false],
+    ['DEMO-999','COMP-G',true],
+    ['DEMO-999','COMP-H',false],
+    ['DEMO-999','COMP-I',true],
+    ['DEMO-999','COMP-J',false]
   ];
   const input=document.getElementById('pyDemoInput');
   const output=document.getElementById('pyDemoOutput');
