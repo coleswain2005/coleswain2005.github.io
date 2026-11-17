@@ -45,22 +45,42 @@
         <div><span>03 / QUERY</span><h3>Search by quote</h3><p>Accept full or partial quote input and select matching quote–component rows.</p></div>
         <div><span>04 / OUTPUT</span><h3>Flag CNC requirements</h3><p>Compare component identifiers with the CNC-required set and display readable quote, part, and status columns.</p></div>
       </div>
-      <div class="py-code-heading"><h3>Representative algorithm</h3><small>Adapted from my JupyterLab notebook screenshots</small></div>
-      <pre class="py-code"><code># Standardize the quote-component table
+      <div class="py-code-heading"><h3>Core quote lookup & CNC classification</h3><small>Selected Python excerpt · adapted from my notebook</small></div>
+      <p>The key function filters the cleaned quote–component table by a complete or partial quote number. Each matching component is then classified against the set of parts requiring CNC operations. The lookup returns a compact, readable result rather than an entire spreadsheet.</p>
+      <pre class="py-code"><code>def lookup_quote(query, data, cnc_parts):
+    # Match either an entire quote number or a partial entry
+    matches = data[
+        data["quote"].str.contains(
+            str(query).upper(), regex=False, na=False
+        )
+    ].copy()
+
+    if matches.empty:
+        return "No matching quote found"
+
+    matches["cnc_status"] = matches["part"].apply(
+        lambda part: "CNC REQUIRED" if part in cnc_parts else "No CNC"
+    )
+    return matches[["quote", "part", "cnc_status"]]</code></pre>
+      <p class="py-code-explanation"><strong>Engineering decision:</strong> separating the search from the CNC-required part set makes it easier to maintain the classification logic as production requirements change. Copying the matched rows also prevents the pandas chained-assignment warning encountered during development.</p>
+      <details class="py-code-details">
+        <summary><span><strong>View data preparation & filtering</strong><small>Supporting pandas excerpt</small></span><span class="py-code-toggle" aria-hidden="true">+</span></summary>
+        <div class="py-code-details-body">
+          <p>Before searching, the workflow cleaned imported quote and part identifiers and excluded accessory families that did not belong in the primary manufacturing analysis.</p>
+          <pre class="py-code"><code># Load and standardize the relevant quote/BOM columns
 data = pd.read_excel("quotes.xlsx", usecols=[1, 2])
 data.columns = ["quote", "part"]
-data["quote"] = data["quote"].astype(str).str.upper()
+
+data["quote"] = data["quote"].astype(str).str.strip().str.upper()
 data["part"] = data["part"].astype(str).str.strip().str.upper()
 
-# Search and classify a complete or partial quote
-matches = data[data["quote"].str.contains(
-    query, regex=False, na=False
-)].copy()
-matches["cnc_status"] = matches["part"].apply(
-    lambda part: "CNC REQUIRED" if part in cnc_parts else "No CNC"
-)
-print(matches[["quote", "part", "cnc_status"]].to_string(index=False))</code></pre>
-      <p class="py-footnote">This shortened excerpt shows the core algorithm, not the complete original notebook. Internal part classifications, filenames, and company records are deliberately omitted.</p>
+# Exclude non-primary part families before classification
+data = data[~data["part"].str.startswith(
+    tuple(excluded_prefixes), na=False
+)].copy()</code></pre>
+        </div>
+      </details>
+      <p class="py-footnote">These are concise adaptations of the working notebook, not a complete source listing. Sample filenames and variable names make the logic readable; the interactive demonstration above uses invented data.</p>
     </div>
     <div class="py-section py-panel">
       <p class="project-detail-label">04 / Results and validation</p>
