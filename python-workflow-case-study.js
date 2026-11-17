@@ -118,12 +118,12 @@ cnc_required_parts = {
           </div>
         </div>
         <div class="py-notebook-cell py-notebook-last">
-          <div class="py-notebook-sidebar"><span>In [3]:</span><span class="py-notebook-out">Out:</span></div>
+          <div class="py-notebook-sidebar"><span>In [3]:</span></div>
           <div class="py-notebook-main">
             <div class="py-cell-header"><span>03 / Run & inspect results</span><button type="button" class="py-copy-code">Copy code</button></div>
             <pre class="py-code py-highlight"><code>Q_P_CNC(data, cnc_required_parts)</code></pre>
             <div class="py-notebook-output" aria-label="Quote lookup output">
-              <div class="py-output-label">Quote lookup output</div>
+              <div class="py-output-label"><span class="py-output-prompt">Out [3]:</span><span>Quote lookup output</span></div>
               <pre>Enter a Quote number (partial match allowed): 101
 Q_Number  Product_Number      CNC_Status
    2101A           9ILF    CNC REQUIRED</pre>
@@ -152,7 +152,8 @@ Q_Number  Product_Number      CNC_Status
   const rows=[
     ['DEMO-101','COMP-A',true],['DEMO-101','COMP-B',false],
     ['DEMO-102','COMP-C',true],['DEMO-202','COMP-D',false],
-    ['DEMO-202','COMP-E',true],['DEMO-303','COMP-F',false]
+    ['DEMO-202','COMP-E',true],['DEMO-303','COMP-F',false],
+    ['DEMO-999','COMP-G',true],['DEMO-999','COMP-H',false]
   ];
   const input=document.getElementById('pyDemoInput');
   const output=document.getElementById('pyDemoOutput');
@@ -161,7 +162,7 @@ Q_Number  Product_Number      CNC_Status
     const query=input.value.trim().toUpperCase();
     const matches=query?rows.filter(row=>row[0].includes(query)):[];
     if(!matches.length){
-      const p=document.createElement('p');p.className='py-none';p.textContent=query?'No matching sample quote. Try 101 or 202.':'Enter a quote number to search.';output.append(p);return;
+      const p=document.createElement('p');p.className='py-none';p.textContent=query?'No matching sample quote. Try 101, 202, or 999.':'Enter a quote number to search.';output.append(p);return;
     }
     const p=document.createElement('p');p.className='py-summary';p.textContent=matches.length+' components found in sample data';output.append(p);
     const table=document.createElement('table');
