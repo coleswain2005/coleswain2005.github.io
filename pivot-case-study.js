@@ -101,7 +101,7 @@
       <p>Further testing showed why: <strong>the same cutter's pivot resistance varied with its opening angle.</strong> Measuring only at the closed position did not fully characterize its behavior.</p>
       <div class="pivot-decision"><span>Finding → design change</span><p>The fixture needed to hold cutters at known opening angles while maintaining a controlled force direction.</p></div>
     </div>
-    <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/prototype.jpg" alt="Early test fixture used to investigate pivot resistance" loading="lazy"><figcaption>Early test fixture used to investigate pivot resistance</figcaption></figure>
+    <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/final-stand.jpg" alt="Initial functional single-position wire-cutter test stand with pulley and hanging mass" loading="lazy"><figcaption>Initial working stand — before the multi-angle fixture and movable pulley redesign</figcaption></figure>
   </div>
 </section>
 <section class="pivot-panel" id="pivot-redesign">
@@ -137,13 +137,41 @@
       <div class="pivot-qc"><span>Too loose</span><span>Loose — pass</span><span>Preferred</span><span>Tight — pass</span><span>Too tight</span></div>
       <div class="pivot-decision"><span>Engineering outcome</span><p>Experimental findings directly informed the redesign; the completed apparatus enabled angle-dependent friction measurements and more consistent tool comparisons.</p></div>
     </div>
-    <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/final-stand.jpg" alt="Final assembled wire-cutter pivot test stand with hanging masses" loading="lazy"><figcaption>Final assembled wire-cutter pivot test stand with hanging masses</figcaption></figure>
+    <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/final-comparison.jpg" alt="SolidWorks final multi-angle test stand design shown beside the completed physical apparatus with added pulley track" loading="lazy"><figcaption>Multi-angle redesigned assembly — CAD and fabricated hardware, including repositionable pulley track</figcaption></figure>
   </div>
   <div class="pivot-results-grid">
     <div><h3>Mechanical design</h3><p>SolidWorks CAD, adjustable fixture geometry, component integration, and DfAM.</p></div>
     <div><h3>Experimental engineering</h3><p>Moment-arm physics, controlled loading, repeatability, and diagnosis of angle sensitivity.</p></div>
     <div><h3>Quality engineering</h3><p>Measured torque data compared against the QC team's qualitative acceptance categories.</p></div>
   </div>
+</section>
+<section class="pivot-panel pivot-evidence" id="pivot-measurements">
+ <p class="pivot-label">07 / Experimental evidence — 15 cutters, four opening angles</p>
+ <h2>The measurements demonstrate why an angle-adjustable test matters.</h2>
+ <p>I recorded the hanging mass needed to initiate cutter opening at 0°, 10°, 20°, and 30° for 15 cutters, then converted each reading to force and pivot torque in Excel. The original worksheet also records inspectors' qualitative classifications.</p>
+ <div class="pivot-evidence-stats"><div><strong>15</strong><span>Cutters evaluated</span></div><div><strong>4</strong><span>Angles per cutter</span></div><div><strong>60</strong><span>Recorded measurements</span></div></div>
+ <div class="pivot-measurement-head"><div><h3>Angle-dependent opening resistance</h3><p>Mass required to initiate motion, kg · select a cutter to trace its measurements against the cohort.</p></div><label for="pivot-cutter-select">Cutter <select id="pivot-cutter-select" aria-label="Choose cutter number"></select></label></div>
+ <div class="pivot-chart-outer"><svg id="pivot-results-chart" role="img" aria-label="Mass required to initiate cutter opening at zero, ten, twenty, and thirty degrees for fifteen cutters" viewBox="0 0 760 350" preserveAspectRatio="xMidYMid meet"></svg></div>
+ <p class="pivot-chart-caption">Measured hanging mass, not torque. Force is calculated as F = mg; torque is then calculated using the nominal 88 mm lever arm. All 15 cutter profiles are shown faintly, with the selected cutter highlighted.</p>
+ <div class="pivot-evidence-findings">
+  <div><strong>Variation within a single cutter</strong><p>Some cutters showed substantially changing opening resistance as the handle moved. For example, cutter 5 decreased from 0.125 kg at 0° to 0.020 kg at 30°.</p></div>
+  <div><strong>Differences between cutters</strong><p>Measurements varied considerably across cutters at the same opening angle. This shows why a single tactile assessment or one-angle reading is an incomplete description.</p></div>
+ </div>
+</section>
+<section class="pivot-panel pivot-next" id="pivot-next">
+ <p class="pivot-label">08 / Follow the variation upstream</p>
+ <h2>What in the assembly process was producing inconsistent pivot friction?</h2>
+ <p>The stand converted subjective observations into comparable measurements, revealing both tool-to-tool differences and dependence on opening angle. Those results pointed toward a deeper manufacturing question: how were assembly and press-fit conditions contributing to pivot tightness?</p>
+ <div class="pivot-story-split">
+  <div class="pivot-story-copy">
+   <h3>Root-cause investigation</h3>
+   <p>I extended the investigation from finished-tool inspection to the manufacturing process itself. The next workstreams focused on holding cutter components consistently during press-fit assembly and measuring the applied assembly forces.</p>
+   <div class="pivot-spec-row"><span>01</span><p><strong>Press-fit locating fixtures</strong> — custom 3D-printed supports to standardize cutter alignment and positioning during assembly.</p></div>
+   <div class="pivot-spec-row"><span>02</span><p><strong>Arbor press instrumentation</strong> — adding force measurement and controlled input to investigate and standardize press-fit loads.</p></div>
+   <a class="pivot-next-link" href="project.html?project=press-fit">Explore the related press-fit standardization project →</a>
+  </div>
+  <figure class="pivot-story-media"><img src="img/projects/press-fit/press-fit-assembly.png" alt="Press-fit tooling and fixture CAD related to cutter assembly standardization" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption>Follow-on work: fixtures and instrumentation for the cutter assembly process</figcaption></figure>
+ </div>
 </section>
   `;
   document.getElementById('projectReturn').before(root);
@@ -166,6 +194,51 @@
   };
   root.querySelector('#pivot-mass').addEventListener('input',updateMass);
   setAngle(0);updateMass();
+
+  // 15 measured cutter profiles from the QC cross-reference worksheet; values are hanging mass in kilograms.
+  const measuredMassKg=[
+    [0.030,0.0175,0.0175,0.015],
+    [0.095,0.0525,0.045,0.020],
+    [0.030,0.0275,0.025,0.030],
+    [0.045,0.045,0.045,0.045],
+    [0.125,0.0625,0.0475,0.020],
+    [0.085,0.0525,0.0625,0.030],
+    [0.020,0.020,0.055,0.075],
+    [0.035,0.0275,0.0325,0.025],
+    [0.020,0.020,0.025,0.0375],
+    [0.035,0.030,0.035,0.025],
+    [0.045,0.0275,0.040,0.020],
+    [0.020,0.025,0.025,0.0275],
+    [0.0275,0.0175,0.0175,0.015],
+    [0.0425,0.045,0.045,0.045],
+    [0.085,0.0825,0.085,0.075]
+  ];
+  const chart=root.querySelector('#pivot-results-chart');
+  const cutterSelect=root.querySelector('#pivot-cutter-select');
+  measuredMassKg.forEach((_,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent='Cutter '+(i+1);cutterSelect.append(o)});
+  cutterSelect.value='4';
+  const ns='http://www.w3.org/2000/svg';
+  const addSvg=(tag,attrs,parent=chart)=>{const el=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));parent.append(el);return el};
+  const chartX=i=>90+i*193,chartY=mass=>282-mass/.13*238;
+  const drawChart=()=>{
+    chart.replaceChildren();
+    const chosen=Number(cutterSelect.value);
+    [0,0.025,0.05,0.075,0.1,0.125].forEach(y=>{
+      const yy=chartY(y);addSvg('line',{x1:80,y1:yy,x2:684,y2:yy,stroke:'#334352','stroke-width':1});
+      const t=addSvg('text',{x:68,y:yy+4,'text-anchor':'end',fill:'#9CAAB5','font-size':12});t.textContent=y.toFixed(3);
+    });
+    [0,10,20,30].forEach((deg,i)=>{const t=addSvg('text',{x:chartX(i),y:310,'text-anchor':'middle',fill:'#BDCAD2','font-size':13});t.textContent=deg+'°'});
+    const xlabel=addSvg('text',{x:382,y:342,'text-anchor':'middle',fill:'#BDCAD2','font-size':13});xlabel.textContent='Cutter opening angle';
+    const paths=measuredMassKg.map(row=>row.map((v,i)=>chartX(i)+','+chartY(v)).join(' '));
+    paths.forEach((path,i)=>{if(i===chosen)return;addSvg('polyline',{points:path,fill:'none',stroke:'#6F8393','stroke-width':1.5,'stroke-opacity':.22})});
+    addSvg('polyline',{points:paths[chosen],fill:'none',stroke:'#65B7F1','stroke-width':3.6,'stroke-linecap':'round','stroke-linejoin':'round'});
+    measuredMassKg[chosen].forEach((mass,i)=>{
+      addSvg('circle',{cx:chartX(i),cy:chartY(mass),r:5.7,fill:'#65B7F1',stroke:'#10161D','stroke-width':2});
+      const yy=chartY(mass);const label=addSvg('text',{x:chartX(i),y:yy<40?yy+22:yy-13,'text-anchor':'middle',fill:'#E5F3FD','font-size':12,'font-weight':600});label.textContent=mass.toFixed(4).replace(/0+$/,'').replace(/\.$/,'')+' kg';
+    });
+  };
+  cutterSelect.addEventListener('change',drawChart);drawChart();
+
   const preferred=new Image();
   preferred.onload=()=>{const img=document.querySelector('#projectVisual img');if(img){img.src=preferred.src;img.alt='Completed instrumented wire-cutter pivot-friction test stand';}};
   preferred.src=folder+'final-stand.jpg';
