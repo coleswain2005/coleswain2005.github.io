@@ -141,7 +141,7 @@ Q_Number  Product_Number      CNC_Status
     <div class="py-section py-panel">
       <p class="project-detail-label">04 / Results and validation</p>
       <h2>A functioning manufacturing-planning lookup</h2>
-      <p>The final notebook accepted quote-number input and returned matched components with CNC-required or no-CNC classifications. Successful outputs are documented in the supplied screenshots. It demonstrates Python data wrangling applied to a real production-planning problem.</p>
+      <p>The final notebook accepted quote-number input and returned matched components with CNC-required or no-CNC classifications. The notebook-style output reproduced above shows the result format from a successful run. It demonstrates Python data wrangling applied to a real production-planning problem.</p>
       <div class="py-results-grid">
         <div><h3>Functional result</h3><p>Quote search, component retrieval, and CNC classification in one repeatable workflow.</p></div>
         <div><h3>Debugging</h3><p>Resolved an undefined-variable error and a pandas chained-assignment warning by explicitly copying filtered rows.</p></div>
