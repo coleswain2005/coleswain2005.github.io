@@ -55,6 +55,10 @@ const projects = {
     description: 'Developed a Python tool that mapped 30,000+ data points across 11,000+ quotes to CNC requirements, automating manufacturing planning and enabling rapid retrieval of required manufacturing procedures.',
     specs: [['Data', '30,000+ points'], ['Quotes', '11,000+'], ['Context', 'Excelta Corp · 2025']],
     tools: 'Python · JupyterLab · Pandas · Workflow Automation',
+    heroImage: {
+      src: 'img/projects/python-workflow/quote-lookup-overview.svg',
+      alt: 'Designed visualization of the quote lookup Jupyter notebook showing pandas data preparation, the Q_P_CNC function, and CNC classification output',
+    },
   },
   'fan-propulsion': {
     title: 'Fan Propulsion: Arduino DAQ & Python Analysis',
