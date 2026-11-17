@@ -20,9 +20,14 @@
   <p class="pivot-label">01 / Problem and measurement concept</p>
   <h2>Quantifying cutter pivot friction.</h2>
   <div class="pivot-story-split"><div class="pivot-story-copy">
-    <p>At Excelta, pivot tightness was evaluated by opening and closing wire cutters and judging the resistance by feel. That made comparisons between tools difficult to standardize.</p>
-    <p><strong>Objective:</strong> develop an intuitive, repeatable fixture that measures the torque required to initiate cutter opening, then relate those readings to the QC team's existing classifications.</p>
-    <div class="pivot-decision"><span>Design requirement</span><p>Constrain the cutter, apply a controlled load, and quantify resistance without relying solely on an operator's perception.</p></div>
+    <p>Excelta inspectors assessed wire-cutter pivot tightness by feel. I developed a test stand to quantify the force required to initiate opening and make cutter comparisons repeatable.</p>
+    <h3>Translating force into pivot friction torque</h3>
+    <p>With one handle fixed, incremental hanging masses supplied the pulling force through a pulley. A nominal <strong>88 mm moment arm</strong> converts that load into pivot torque.</p>
+    <div class="pivot-principle-card">
+      <div class="pivot-principle-equation"><span class="pivot-principle-overline">Measurement principle</span><strong>τ = m × g × r</strong><span>Force perpendicular to the moving handle</span></div>
+      <div class="pivot-principle-details"><div><strong>m</strong><span>Hanging mass</span></div><div><strong>g</strong><span>9.81 m/s²</span></div><div><strong>r</strong><span>≈ 88 mm</span></div></div>
+    </div>
+    <p class="pivot-method-summary">Add mass until the cutter starts opening, then calculate the initiation torque.</p>
   </div><figure class="pivot-story-media pivot-sketch-figure"><div class="pivot-sketch-image"><img src="img/projects/pivot-test-stand/media/torque-sketch.jpg" alt="Upright hand sketch of wire-cutter pivot friction, applied force and moment arm" loading="lazy"></div><figcaption>Initial concept sketch — force, pivot, and 88 mm lever arm</figcaption></figure></div>
 </section>
 
@@ -97,10 +102,10 @@
     </div>
     <figure class="pivot-story-media"><img src="img/projects/pivot-test-stand/media/final-comparison.jpg" alt="SolidWorks final multi-angle test stand design shown beside the completed physical apparatus with added pulley track" loading="lazy"><figcaption>Multi-angle redesigned assembly — CAD and fabricated hardware, including repositionable pulley track</figcaption></figure>
   </div>
-<div class="pivot-results-data"><h3>Measured opening resistance</h3><div class="pivot-evidence-stats"><div><strong>15</strong><span>Cutters evaluated</span></div><div><strong>4</strong><span>Angles per cutter</span></div><div><strong>60</strong><span>Recorded measurements</span></div></div>
+<div class="pivot-results-data"><div class="pivot-evidence-stats"><div><strong>15</strong><span>Cutters evaluated</span></div><div><strong>4</strong><span>Angles per cutter</span></div><div><strong>60</strong><span>Recorded measurements</span></div></div>
  <div class="pivot-measurement-head"><div><h3>Angle-dependent opening resistance</h3><p>Mass required to initiate motion, kg · select a cutter to trace its measurements against the cohort.</p></div><label for="pivot-cutter-select">Cutter <select id="pivot-cutter-select" aria-label="Choose cutter number"></select></label></div>
  <div class="pivot-chart-outer"><svg id="pivot-results-chart" role="img" aria-label="Mass required to initiate cutter opening at zero, ten, twenty, and thirty degrees for fifteen cutters" viewBox="0 0 760 350" preserveAspectRatio="xMidYMid meet"></svg></div>
- <p class="pivot-chart-caption">Measured hanging mass, not torque. Force is calculated as F = mg; torque is then calculated using the nominal 88 mm lever arm. All 15 cutter profiles are shown faintly, with the selected cutter highlighted.</p>
+ <p class="pivot-chart-caption">Measured hanging mass (kg), not calculated torque. Selected cutter highlighted; others shown in gray.</p>
 <p class="pivot-chart-caption"><strong>Key finding:</strong> Cutter 5 decreased from 0.125 kg at 0° to 0.020 kg at 30°, a 6.25× difference in initiation load.</p>
 </div>
 </section>
@@ -110,7 +115,7 @@
  <p>Quantifying the variation led to a follow-on question: could cutter assembly and press-fit conditions be driving inconsistent pivot friction?</p>
  <div class="pivot-story-split">
   <div class="pivot-story-copy">
-<h3>Next: investigate the press-fit process</h3><p>I developed locating fixtures to standardize tool positioning and instrumented an arbor press to measure assembly loads.</p>
+<h3>Follow-on engineering work</h3>
    <div class="pivot-spec-row"><span>01</span><p><strong>Press-fit locating fixtures</strong> — custom 3D-printed supports to standardize cutter alignment and positioning during assembly.</p></div>
    <div class="pivot-spec-row"><span>02</span><p><strong>Arbor press instrumentation</strong> — adding force measurement and controlled input to investigate and standardize press-fit loads.</p></div>
    <a class="pivot-next-link" href="project.html?project=press-fit">Explore the related press-fit standardization project →</a>
