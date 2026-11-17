@@ -136,7 +136,7 @@ Q_Number  Product_Number      CNC_Status
         <div><strong>Why normalize first?</strong><p>Consistent part identifiers make exact membership tests against the CNC-required set possible.</p></div>
         <div><strong>Why copy the filtered rows?</strong><p>The final notebook resolved the pandas <code>SettingWithCopyWarning</code> by creating an explicit copy before adding the status column.</p></div>
       </div>
-      <p class="py-footnote"></p>
+      
     </div>
     <div class="py-section py-panel">
       <p class="project-detail-label">04 / Results and validation</p>
@@ -163,7 +163,7 @@ Q_Number  Product_Number      CNC_Status
     if(!matches.length){
       const p=document.createElement('p');p.className='py-none';p.textContent=query?'No matching sample quote. Try 101 or 202.':'Enter a quote number to search.';output.append(p);return;
     }
-    const p=document.createElement('p');p.className='py-summary';p.textContent=matches.length+' components found in synthetic quote data';output.append(p);
+    const p=document.createElement('p');p.className='py-summary';p.textContent=matches.length+' components found in sample data';output.append(p);
     const table=document.createElement('table');
     const head=document.createElement('thead');const tr=document.createElement('tr');
     ['Quote','Part','CNC status'].forEach(name=>{const th=document.createElement('th');th.textContent=name;tr.append(th)});
