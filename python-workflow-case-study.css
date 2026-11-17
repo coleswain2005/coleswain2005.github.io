@@ -59,7 +59,7 @@
 .project-detail-page .py-code-details-body .py-code { margin:0; }
 @media(max-width:460px){ .project-detail-page .py-code-details summary { padding:16px; }.project-detail-page .py-code-details-body { padding:0 16px 16px; } }
 
-/* Screenshot-grounded notebook presentation; preserve existing site colors. */
+/* Notebook code layout. */
 .project-detail-page .py-notebook { overflow:hidden; border:1px solid #343E4A; border-radius:8px; background:#101419; margin:30px 0 26px; }
 .project-detail-page .py-notebook-top { display:flex; align-items:center; flex-wrap:wrap; gap:9px; padding:15px 20px; border-bottom:1px solid #333B47; background:#1D252D; font:10px 'JetBrains Mono',monospace; color:#A0A8B0; }
 .project-detail-page .py-notebook-top strong { margin-left:12px; font-weight:500; color:#E8EAE6; }
